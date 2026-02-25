@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -324,6 +324,35 @@ svg.map-svg{width:100%;height:100%}
   </div>
 </div>
 
+<!-- INSURANCE MODAL -->
+<div id="insuranceModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:15000;overflow-y:auto">
+  <div style="max-width:900px;margin:40px auto;padding:32px;background:#161616;border:1px solid #d4a843">
+    <h1 style="text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.22em;color:#d4a843;margin-bottom:6px">INSURANCE</h1>
+    <p style="text-align:center;color:#7a7060;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px">Every season, one animal escapes. If yours escapes you forfeit all revenue for that city.</p>
+    <p style="text-align:center;color:#3a3830;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px">Cover a full category · Full ($20M = 100% revenue protected) · Half ($10M = 50% protected)</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px" id="insurancePanels"></div>
+    <p style="text-align:center;color:#3a3830;font-size:0.68rem;margin-bottom:18px">Costs are deducted immediately. All teams must decide before travel begins.</p>
+    <div style="text-align:center">
+      <button onclick="confirmInsurance()" style="padding:12px 40px;background:#d4a843;color:#0d0d0d;border:none;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;cursor:pointer">LOCK IN &amp; START SEASON</button>
+    </div>
+  </div>
+</div>
+
+<!-- ESCAPE ANIMATION OVERLAY -->
+<div id="escapeOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:25000;pointer-events:none;overflow:hidden">
+  <canvas id="escapeCanvas" style="width:100%;height:100%"></canvas>
+</div>
+<div id="escapeModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:24000;display:none;align-items:center;justify-content:center">
+  <div style="text-align:center;padding:40px;max-width:500px">
+    <div style="font-size:5rem;margin-bottom:10px" id="escapeCatIcon"></div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.3em;color:#c0392b;margin-bottom:10px;text-transform:uppercase">BREAKOUT!</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:0.12em;color:#f0ece4;margin-bottom:8px" id="escapeAnimalName">—</div>
+    <div style="font-size:0.8rem;color:#7a7060;margin-bottom:22px;font-style:italic" id="escapeAnimalLatin">—</div>
+    <div id="escapeImpact" style="font-size:0.82rem;color:#7a7060;line-height:1.7;margin-bottom:24px"></div>
+    <button onclick="closeEscapeModal()" style="padding:10px 32px;background:#c0392b;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.15em;cursor:pointer">CONTINUE</button>
+  </div>
+</div>
+
 <script>
 // =============================================
 // 24 ANIMALS  (6 per category)
@@ -331,82 +360,82 @@ svg.map-svg{width:100%;height:100%}
 const animals = [
   // LAND
   {title:"Tyrannosaurus Rex", latin:"Tyrannosaurus rex",             period:"Late Cretaceous · 68–66 Ma",    category:"land", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Tyrannosaurus%20Rex.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Tyrannosaurus%20Rex.webp",
    cities:{newyork:18,london:15,paris:14,dubai:12,capetown:10,mexicocity:13,saopaulo:11,tokyo:16,shanghai:14,moscow:8}},
   {title:"Spinosaurus",       latin:"Spinosaurus aegyptiacus",       period:"Cretaceous · 99–93 Ma",         category:"land",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Spinosaurus.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Spinosaurus.webp",
    cities:{newyork:14,london:12,paris:11,dubai:10,capetown:9,mexicocity:11,saopaulo:9,tokyo:12,shanghai:13,moscow:6}},
   {title:"Triceratops",       latin:"Triceratops horridus",          period:"Late Cretaceous · 68–66 Ma",    category:"land",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Triceratops.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Triceratops.webp",
    cities:{newyork:13,london:11,paris:10,dubai:8,capetown:8,mexicocity:12,saopaulo:10,tokyo:9,shanghai:9,moscow:5}},
   {title:"Stegosaurus",       latin:"Stegosaurus armatus",           period:"Late Jurassic · 155–150 Ma",    category:"land",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Stegosaurus.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Stegosaurus.webp",
    cities:{newyork:11,london:10,paris:10,dubai:8,capetown:7,mexicocity:9,saopaulo:8,tokyo:9,shanghai:8,moscow:5}},
   {title:"Barbary Lion",      latin:"Panthera leo leo",              period:"Extinct · 1922 CE",             category:"land",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Barbary%20Lion.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Barbary%20Lion.jpg",
    cities:{newyork:12,london:14,paris:13,dubai:15,capetown:12,mexicocity:10,saopaulo:9,tokyo:8,shanghai:9,moscow:7}},
   {title:"Cave Lion",         latin:"Panthera spelaea",              period:"Pleistocene · 370k–13k yrs",    category:"land",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Cave%20Lion.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Cave%20Lion.webp",
    cities:{newyork:10,london:13,paris:12,dubai:10,capetown:8,mexicocity:9,saopaulo:8,tokyo:9,shanghai:9,moscow:13}},
 
   // AIR
   {title:"Quetzalcoatlus",    latin:"Quetzalcoatlus northropi",      period:"Late Cretaceous · 68–66 Ma",    category:"air",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Quetzalcoatlus.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Quetzalcoatlus.webp",
    cities:{newyork:12,london:10,paris:11,dubai:13,capetown:9,mexicocity:15,saopaulo:12,tokyo:8,shanghai:9,moscow:5}},
   {title:"Pteranodon",        latin:"Pteranodon longiceps",          period:"Late Cretaceous · 86–84 Ma",    category:"air", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Pteranodon.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Pteranodon.webp",
    cities:{newyork:11,london:9,paris:10,dubai:10,capetown:8,mexicocity:10,saopaulo:9,tokyo:10,shanghai:9,moscow:5}},
   {title:"Argentavis",        latin:"Argentavis magnificens",        period:"Late Miocene · 6 Ma",           category:"air",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Argentavis.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Argentavis.webp",
    cities:{newyork:8,london:7,paris:8,dubai:7,capetown:7,mexicocity:9,saopaulo:14,tokyo:6,shanghai:7,moscow:4}},
   {title:"Terror Bird",       latin:"Phorusrhacidae",                period:"Eocene–Pleistocene · 62–2 Ma",  category:"air",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Terror%20Bird.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Terror%20Bird.jpg",
    cities:{newyork:9,london:8,paris:9,dubai:8,capetown:10,mexicocity:11,saopaulo:13,tokyo:7,shanghai:7,moscow:4}},
   {title:"Microraptor",       latin:"Microraptor gui",               period:"Early Cretaceous · 125–120 Ma", category:"air",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Microraptor.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Microraptor.jpg",
    cities:{newyork:8,london:7,paris:8,dubai:8,capetown:6,mexicocity:7,saopaulo:6,tokyo:12,shanghai:14,moscow:3}},
   {title:"Dimorphodon",       latin:"Dimorphodon macronyx",          period:"Early Jurassic · 196–183 Ma",   category:"air",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Dimorphodon.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Dimorphodon.webp",
    cities:{newyork:7,london:9,paris:8,dubai:6,capetown:6,mexicocity:7,saopaulo:6,tokyo:7,shanghai:6,moscow:4}},
 
   // SEA
   {title:"Megalodon",         latin:"Otodus megalodon",              period:"Miocene–Pliocene · 23–3.6 Ma",  category:"sea", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Megalodon.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Megalodon.jpg",
    cities:{newyork:16,london:13,paris:12,dubai:11,capetown:12,mexicocity:10,saopaulo:9,tokyo:14,shanghai:12,moscow:5}},
   {title:"Mosasaurus",        latin:"Mosasaurus hoffmannii",         period:"Late Cretaceous · 82–66 Ma",    category:"sea",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Mosasaurus.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Mosasaurus.jpg",
    cities:{newyork:12,london:11,paris:10,dubai:9,capetown:10,mexicocity:9,saopaulo:8,tokyo:11,shanghai:10,moscow:5}},
   {title:"Dunkleosteus",      latin:"Dunkleosteus terrelli",         period:"Late Devonian · 382–358 Ma",    category:"sea",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Dunkleosteus.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Dunkleosteus.webp",
    cities:{newyork:10,london:12,paris:11,dubai:8,capetown:7,mexicocity:8,saopaulo:7,tokyo:9,shanghai:9,moscow:6}},
   {title:"Plesiosaur",        latin:"Elasmosaurus platyurus",        period:"Late Cretaceous · 80 Ma",       category:"sea", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Plesiosaur.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Plesiosaur.jpg",
    cities:{newyork:11,london:14,paris:12,dubai:9,capetown:8,mexicocity:8,saopaulo:7,tokyo:10,shanghai:9,moscow:7}},
   {title:"Helicoprion",       latin:"Helicoprion bessonowi",         period:"Permian · 290–250 Ma",          category:"sea",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Helicoprion.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Helicoprion.jpg",
    cities:{newyork:8,london:9,paris:9,dubai:7,capetown:6,mexicocity:7,saopaulo:6,tokyo:8,shanghai:9,moscow:5}},
   {title:"Liopleurodon",      latin:"Liopleurodon ferox",            period:"Middle Jurassic · 165–155 Ma",  category:"sea",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Liopleurodon-dino-large.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Liopleurodon-dino-large.webp",
    cities:{newyork:9,london:11,paris:10,dubai:8,capetown:7,mexicocity:7,saopaulo:6,tokyo:8,shanghai:8,moscow:6}},
 
   // ICE
   {title:"Saber-Tooth Cat",   latin:"Smilodon fatalis",              period:"Pleistocene · 2.5 Ma–10k yrs",  category:"ice", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Sabertooth%20Cat.png",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Sabertooth%20Cat.png",
    cities:{newyork:14,london:12,paris:11,dubai:9,capetown:9,mexicocity:11,saopaulo:9,tokyo:11,shanghai:10,moscow:7}},
   {title:"Cave Bear",         latin:"Ursus spelaeus",                period:"Pleistocene · 1.2 Ma–24k yrs",  category:"ice",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Cave%20Bear.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Cave%20Bear.jpg",
    cities:{newyork:8,london:10,paris:11,dubai:6,capetown:6,mexicocity:7,saopaulo:6,tokyo:8,shanghai:8,moscow:14}},
   {title:"Irish Elk",         latin:"Megaloceros giganteus",         period:"Pleistocene · 400k–7.7k yrs",   category:"ice",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Irish%20Elk.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Irish%20Elk.webp",
    cities:{newyork:7,london:13,paris:12,dubai:6,capetown:5,mexicocity:6,saopaulo:5,tokyo:7,shanghai:7,moscow:11}},
   {title:"Giant Ground Sloth",latin:"Megatherium americanum",        period:"Pliocene–Pleistocene · 5.3 Ma", category:"ice",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Giant%20Sloth.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Giant%20Sloth.jpg",
    cities:{newyork:7,london:8,paris:9,dubai:7,capetown:8,mexicocity:12,saopaulo:14,tokyo:6,shanghai:7,moscow:5}},
   {title:"Woolly Mammoth",    latin:"Mammuthus primigenius",         period:"Pleistocene · 400k–4k yrs",     category:"ice",
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Woolly%20Mammoth.webp",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Woolly%20Mammoth.webp",
    cities:{newyork:11,london:13,paris:12,dubai:7,capetown:6,mexicocity:9,saopaulo:7,tokyo:10,shanghai:10,moscow:15}},
   {title:"Short-Face Bear",   latin:"Arctodus simus",                period:"Pleistocene · 1.8 Ma–11k yrs",  category:"ice", star:true,
-   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings-images/main/Short-Face%20Bear.jpg",
+   img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Short-Face%20Bear.jpg",
    cities:{newyork:8,london:8,paris:8,dubai:6,capetown:6,mexicocity:8,saopaulo:7,tokyo:7,shanghai:7,moscow:12}}
 ];
 
@@ -1199,31 +1228,5 @@ updateCount();
 updateCompetitiveAnalysis();
 </script>
 
-<!-- INSURANCE MODAL -->
-<div id="insuranceModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:15000;overflow-y:auto">
-  <div style="max-width:900px;margin:40px auto;padding:32px;background:#161616;border:1px solid #d4a843">
-    <h1 style="text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.22em;color:#d4a843;margin-bottom:6px">INSURANCE</h1>
-    <p style="text-align:center;color:#7a7060;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px">Every season, one animal escapes. If yours escapes you forfeit all revenue for that city.</p>
-    <p style="text-align:center;color:#3a3830;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px">Cover a full category · Full ($20M = 100% revenue protected) · Half ($10M = 50% protected)</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px" id="insurancePanels"></div>
-    <p style="text-align:center;color:#3a3830;font-size:0.68rem;margin-bottom:18px">Costs are deducted immediately. All teams must decide before travel begins.</p>
-    <div style="text-align:center">
-      <button onclick="confirmInsurance()" style="padding:12px 40px;background:#d4a843;color:#0d0d0d;border:none;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;cursor:pointer">LOCK IN &amp; START SEASON</button>
-    </div>
-  </div>
-</div>
-
-<!-- ESCAPE ANIMATION OVERLAY -->
-<div id="escapeOverlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:25000;pointer-events:none;overflow:hidden">
-  <canvas id="escapeCanvas" style="width:100%;height:100%"></canvas>
-</div>
-<div id="escapeModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:24000;display:none;align-items:center;justify-content:center">
-  <div style="text-align:center;padding:40px;max-width:500px">
-    <div style="font-size:5rem;margin-bottom:10px" id="escapeCatIcon"></div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.3em;color:#c0392b;margin-bottom:10px;text-transform:uppercase">BREAKOUT!</div>
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:0.12em;color:#f0ece4;margin-bottom:8px" id="escapeAnimalName">—</div>
-    <div style="font-size:0.8rem;color:#7a7060;margin-bottom:22px;font-style:italic" id="escapeAnimalLatin">—</div>
-    <div id="escapeImpact" style="font-size:0.82rem;color:#7a7060;line-height:1.7;margin-bottom:24px"></div>
-    <button onclick="closeEscapeModal()" style="padding:10px 32px;background:#c0392b;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.15em;cursor:pointer">CONTINUE</button>
-  </div>
-</div>
+</body>
+</html>
