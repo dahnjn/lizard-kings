@@ -41,7 +41,7 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
 
-.animal-card{background:#ffffff;border:1px solid #e0dbd2;height:480px;display:flex;flex-direction:column;transition:border-color 0.2s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.animal-card{background:#ffffff;border:1px solid #e0dbd2;height:auto;display:flex;flex-direction:column;transition:border-color 0.2s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
 .animal-card:hover{border-color:#c49a28;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
 .animal-card.hidden{display:none}
 .animal-card.land{border-left:3px solid #a0522d}
@@ -54,8 +54,8 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 .animal-latin{color:#9a8e80;font-size:0.68rem;font-style:italic}
 .animal-meta{color:#b0a898;font-size:0.62rem;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
 
-.image-container{flex:1;background:#edeae4;display:flex;align-items:center;justify-content:center;padding:20px 16px;overflow:hidden;position:relative}
-.image-container img{max-width:75%;max-height:75%;object-fit:contain;object-position:center center}
+.image-container{height:220px;flex:none;background:#e8e4dc;display:flex;align-items:center;justify-content:center;padding:24px 20px;overflow:hidden;position:relative}
+.image-container img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
 .category-pip{position:absolute;bottom:7px;right:7px;padding:2px 7px;font-size:0.57rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em}
 .pip-land{background:#a0522d;color:#f0ece4}.pip-air{background:#4682a0;color:#f0ece4}
 .pip-sea{background:#2e7d62;color:#f0ece4}.pip-ice{background:#7090a8;color:#f0ece4}
