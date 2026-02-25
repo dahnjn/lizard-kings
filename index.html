@@ -54,17 +54,17 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 .animal-latin{color:#9a8e80;font-size:0.68rem;font-style:italic}
 .animal-meta{color:#b0a898;font-size:0.62rem;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
 
-.image-container{flex:1;background:linear-gradient(180deg,#edeae4 0%,#f5f2ed 100%);display:flex;align-items:center;justify-content:center;padding:12px 8px 8px;overflow:hidden;position:relative}
-.image-container img{max-width:100%;max-height:100%;object-fit:contain;object-position:center bottom}
+.image-container{flex:1;background:linear-gradient(180deg,#edeae4 0%,#f5f2ed 100%);display:flex;align-items:center;justify-content:center;padding:18px 14px 10px;overflow:hidden;position:relative}
+.image-container img{max-width:88%;max-height:88%;object-fit:contain;object-position:center bottom}
 .category-pip{position:absolute;bottom:7px;right:7px;padding:2px 7px;font-size:0.57rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em}
 .pip-land{background:#a0522d;color:#f0ece4}.pip-air{background:#4682a0;color:#f0ece4}
 .pip-sea{background:#2e7d62;color:#f0ece4}.pip-ice{background:#7090a8;color:#f0ece4}
 
 .card-footer{padding:8px 12px;background:#fafaf8;border-top:1px solid #ede8e0}
 .ticket-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
-.ticket-chip{display:flex;flex-direction:column;align-items:center;padding:4px 2px;font-size:0.57rem;line-height:1.3}
+.ticket-chip{display:flex;flex-direction:column;align-items:center;padding:4px 2px;font-size:0.65rem;line-height:1.3}
 .ticket-city{font-weight:700;text-transform:uppercase;opacity:0.6}
-.ticket-price{font-weight:600;font-size:0.67rem}
+.ticket-price{font-weight:700;font-size:0.78rem}
 
 /* Each city gets its own distinct hue — no two are the same */
 .city-newyork   {background:#fdf0f0;color:#c04040}
@@ -192,7 +192,7 @@ svg.map-svg{width:100%;height:100%}
 </header>
 
 <div id="competitiveAnalysis">
-  <h2>Zoo Ticket Analysis</h2>
+  <h2>Zoo Ticket Analysis ($)</h2>
   <div style="overflow-x:auto">
     <table><thead><tr><th>City</th><th>Red</th><th>Yellow</th><th>Blue</th><th>Green</th></tr></thead>
     <tbody id="analysisTableBody"></tbody></table>
@@ -225,7 +225,7 @@ svg.map-svg{width:100%;height:100%}
         <h3>Scoreboard</h3><div id="scoreboard"></div>
       </div>
       <div class="game-controls">
-        <button id="nextRound">NEXT SEASON</button>
+        <button id="nextRound">NEXT YEAR</button>
         <button id="resetGame">RESET GAME</button>
         <button id="saveGame">SAVE GAME</button>
         <button id="loadGame">LOAD GAME</button>
@@ -235,25 +235,25 @@ svg.map-svg{width:100%;height:100%}
         <div class="team-stat"><span>Ticket Value</span><span id="tv1">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash1">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount1">0</span></div>
-        <div class="team-stat"><span>Score</span><span id="score1">—</span></div>
+        <div style="display:none"><span id="score1"></span></div>
       </div>
       <div class="team-panel team-2"><h4>Yellow</h4><select id="dest2"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv2">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash2">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount2">0</span></div>
-        <div class="team-stat"><span>Score</span><span id="score2">—</span></div>
+        <div style="display:none"><span id="score2"></span></div>
       </div>
       <div class="team-panel team-3"><h4>Blue</h4><select id="dest3"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv3">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash3">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount3">0</span></div>
-        <div class="team-stat"><span>Score</span><span id="score3">—</span></div>
+        <div style="display:none"><span id="score3"></span></div>
       </div>
       <div class="team-panel team-4"><h4>Green</h4><select id="dest4"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv4">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash4">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount4">0</span></div>
-        <div class="team-stat"><span>Score</span><span id="score4">—</span></div>
+        <div style="display:none"><span id="score4"></span></div>
       </div>
       <div class="log-container"><h3>Game Log</h3><div id="logEntries"></div></div>
     </div>
@@ -344,7 +344,7 @@ svg.map-svg{width:100%;height:100%}
 </div>
 <div id="escapeModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:24000;display:none;align-items:center;justify-content:center">
   <div style="text-align:center;padding:40px;max-width:500px">
-    <div style="font-size:5rem;margin-bottom:10px" id="escapeCatIcon"></div>
+    <div style="display:none" id="escapeCatIcon"></div>
     <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.3em;color:#c0392b;margin-bottom:10px;text-transform:uppercase">BREAKOUT!</div>
     <div style="font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:0.12em;color:#f0ece4;margin-bottom:8px" id="escapeAnimalName">—</div>
     <div style="font-size:0.8rem;color:#7a7060;margin-bottom:22px;font-style:italic" id="escapeAnimalLatin">—</div>
@@ -359,7 +359,7 @@ svg.map-svg{width:100%;height:100%}
 // =============================================
 const animals = [
   // LAND
-  {title:"Tyrannosaurus Rex", latin:"Tyrannosaurus rex",             period:"Late Cretaceous · 68–66 Ma",    category:"land", star:true,
+  {title:"Tyrannosaurus Rex", latin:"Tyrannosaurus rex",             period:"Late Cretaceous · 68–66 Ma",    category:"land",
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Tyrannosaurus%20Rex.webp",
    cities:{newyork:18,london:15,paris:14,dubai:12,capetown:10,mexicocity:13,saopaulo:11,tokyo:16,shanghai:14,moscow:8}},
   {title:"Spinosaurus",       latin:"Spinosaurus aegyptiacus",       period:"Cretaceous · 99–93 Ma",         category:"land",
@@ -368,7 +368,7 @@ const animals = [
   {title:"Triceratops",       latin:"Triceratops horridus",          period:"Late Cretaceous · 68–66 Ma",    category:"land",
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Triceratops.webp",
    cities:{newyork:13,london:11,paris:10,dubai:8,capetown:8,mexicocity:12,saopaulo:10,tokyo:9,shanghai:9,moscow:5}},
-  {title:"Stegosaurus",       latin:"Stegosaurus armatus",           period:"Late Jurassic · 155–150 Ma",    category:"land",
+  {title:"Stegosaurus",       latin:"Stegosaurus armatus",           period:"Late Jurassic · 155–150 Ma",    category:"land", star:true,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Stegosaurus.webp",
    cities:{newyork:11,london:10,paris:10,dubai:8,capetown:7,mexicocity:9,saopaulo:8,tokyo:9,shanghai:8,moscow:5}},
   {title:"Barbary Lion",      latin:"Panthera leo leo",              period:"Extinct · 1922 CE",             category:"land",
@@ -618,7 +618,7 @@ function updateCompetitiveAnalysis(){
   body.innerHTML=cities.map(city=>{
     const vals=[tv[1][city],tv[2][city],tv[3][city],tv[4][city]],max=Math.max(...vals);
     if(!vals.some(v=>v>0))return'';
-    const cells=vals.map((v,i)=>!v?`<td style="padding:8px 10px;color:#242424">—</td>`:`<td style="padding:8px 10px;background:${v===max?teamCol[i+1]+'18':'transparent'};font-weight:${v===max?700:400}"><span style="color:${teamCol[i+1]}">${v}</span></td>`).join('');
+    const cells=vals.map((v,i)=>!v?`<td style="padding:8px 10px;color:#242424">—</td>`:`<td style="padding:8px 10px;background:${v===max?teamCol[i+1]+'18':'transparent'};font-weight:${v===max?700:400}"><span style="color:${teamCol[i+1]}">$${v}</span></td>`).join('');
     return`<tr><td style="padding:8px 10px;color:#7a7060;font-size:0.78rem">${cityFullNames[city]}</td>${cells}</tr>`;
   }).filter(r=>r).join('');
 }
@@ -666,42 +666,30 @@ function populateDestinationDropdowns(){
 // SCORING
 // =============================================
 function computeScores(){
-  const raw={};
-  [1,2,3,4].forEach(tn=>{
-    let att=0;Object.entries(gameState.teams[tn].soldTo||{}).forEach(([c,p])=>att+=Math.round(cityData[c].pop*p));
-    raw[tn]={profit:gameState.teams[tn].cash,attendance:att};
-  });
-  const ps=Object.values(raw).map(r=>r.profit),as=Object.values(raw).map(r=>r.attendance);
-  const maxP=Math.max(...ps),minP=Math.min(...ps),maxA=Math.max(...as),minA=Math.min(...as);
   const sc={};
   [1,2,3,4].forEach(tn=>{
-    const pS=maxP===minP?50:Math.round((raw[tn].profit-minP)/(maxP-minP)*100);
-    const aS=maxA===minA?50:Math.round((raw[tn].attendance-minA)/(maxA-minA)*100);
-    sc[tn]={profitScore:pS,attendanceScore:aS,total:pS+aS,raw:raw[tn]};
+    sc[tn]={cash:gameState.teams[tn].cash};
   });return sc;
 }
 
 function updateTeamDisplay(){
-  const tv=getTeamTicketValues(),sc=computeScores();
+  const tv=getTeamTicketValues();
   for(let i=1;i<=4;i++){
     const dest=document.getElementById(`dest${i}`).value||gameState.teams[i].city;
     document.getElementById(`tv${i}`).textContent='$'+(dest!=='start'?(tv[i][dest]||0):0);
     const cash=gameState.teams[i].cash,cel=document.getElementById(`cash${i}`);
-    cel.textContent='$'+cash.toLocaleString();cel.style.color=cash<0?'#c0392b':'#f0ece4';
+    cel.textContent='$'+cash.toLocaleString();cel.style.color=cash<0?'#c0392b':'#1a1714';
     document.getElementById(`artcount${i}`).textContent=gameState.teams[i].artworks.length;
-    const s=sc[i];document.getElementById(`score${i}`).textContent=s.total+' (P:'+s.profitScore+' A:'+s.attendanceScore+')';
+    document.getElementById(`score${i}`).textContent='$'+cash.toLocaleString();
   }
-  const sorted=[1,2,3,4].map(n=>({n,...sc[n]})).sort((a,b)=>b.total-a.total);
+  const sorted=[1,2,3,4].map(n=>({n,cash:gameState.teams[n].cash})).sort((a,b)=>b.cash-a.cash);
   document.getElementById('scoreboard').innerHTML=sorted.map((t,i)=>`
-    <div style="padding:6px 8px;background:#0d0d0d;margin-bottom:3px;border-left:3px solid ${teamCol[t.n]}">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px">
-        <div style="display:flex;align-items:center;gap:7px"><span style="color:#3a3830;font-size:0.63rem">#${i+1}</span><span style="color:${teamCol[t.n]};font-weight:600;font-size:0.76rem">${teamName[t.n]}</span></div>
-        <span style="color:#d4a843;font-weight:bold;font-size:0.82rem">${t.total}pts</span>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:#fff;border:1px solid #e0dbd2;margin-bottom:3px;border-left:3px solid ${teamCol[t.n]}">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="color:#b0a898;font-size:0.63rem;font-weight:600">#${i+1}</span>
+        <span style="color:${teamCol[t.n]};font-weight:700;font-size:0.8rem;letter-spacing:0.06em">${teamName[t.n]}</span>
       </div>
-      <div style="display:flex;gap:8px;font-size:0.62rem">
-        <span style="color:#3a3830">Rev: <span style="color:#38b878">$${(t.raw.profit/1000000).toFixed(1)}M</span> <span style="color:#3a3830">(${t.profitScore})</span></span>
-        <span style="color:#3a3830">Att: <span style="color:#3898c8">${(t.raw.attendance/1000000).toFixed(1)}M</span> <span style="color:#3a3830">(${t.attendanceScore})</span></span>
-      </div>
+      <span style="color:#1a1714;font-weight:700;font-size:0.85rem">$${(t.cash/1000000).toFixed(2)}M</span>
     </div>`).join('');
   document.getElementById('roundsRemaining').textContent=Math.max(0,gameState.maxRounds-gameState.round+1);
 }
@@ -785,7 +773,7 @@ function showSeasonResults(cur, results){
   const escapeLabel = lastEscAn ? `<div style="margin-bottom:12px;padding:8px 12px;background:#1a0505;border:1px solid #c0392b;font-size:0.72rem;color:#e07070">ESCAPED THIS SEASON: <strong>${lastEscAn.title}</strong> (${lastEscAn.category.toUpperCase()}) — owners without ${lastEscAn.category} insurance forfeited revenue</div>` : '';
 
   let html=`<div style="background:#161616;padding:0;max-width:660px;width:95%;max-height:90vh;overflow:auto;border:1px solid #2a2a2a">
-    <div style="background:#0d0d0d;color:#d4a843;padding:14px 18px;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.18em;border-bottom:1px solid #242424">SEASON ${cur} RESULTS</div>
+    <div style="background:#0d0d0d;color:#d4a843;padding:14px 18px;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.18em;border-bottom:1px solid #242424">YEAR ${cur} RESULTS</div>
     <div style="padding:16px">${escapeLabel}`;
   if(!results.length)html+='<p style="text-align:center;color:#3a3830;padding:32px;font-size:0.82rem">All teams at START — no revenue</p>';
   else results.forEach(r=>{
@@ -820,7 +808,7 @@ function showSeasonResults(cur, results){
   const ld=document.getElementById('logEntries');
   const esc = lastEscAn ? ` [${lastEscAn.title} escaped!]` : '';
   const ll=results.flatMap(r=>r.teams.map(t=>`T${t.teamNum} at ${r.city}: $${t.revenue.toLocaleString()} (${Math.round(t.actualShare*100)}%)`));
-  ld.innerHTML=`<div class="log-entry"><strong>S${cur}:${esc}</strong></div>`+ll.map(l=>`<div class="log-entry">${l}</div>`).join('')+ld.innerHTML;
+  ld.innerHTML=`<div class="log-entry"><strong>Y${cur}:${esc}</strong></div>`+ll.map(l=>`<div class="log-entry">${l}</div>`).join('')+ld.innerHTML;
   gameState.round++;drawTeams();populateDestinationDropdowns();updateTeamDisplay();
   if(gameState.round>gameState.maxRounds)showEndGameScreen();
 }
@@ -955,13 +943,13 @@ function draftToTeam(teamNum){
 }
 function updateDraftHistory(){
   const div=document.getElementById('draftHistory');
-  if(!draftHistory.length){div.innerHTML='<p style="color:#3a3830;font-size:0.72rem;text-align:center">No picks yet</p>';return;}
+  if(!draftHistory.length){div.innerHTML='<p style="color:#b0a898;font-size:0.72rem;text-align:center">No picks yet</p>';return;}
   div.innerHTML=[...draftHistory].reverse().map(h=>{
     const col=teamCol[h.team];
     const tag=h.type==='bonus'?`<span style="background:#242424;color:#d4a843;font-size:0.56rem;padding:1px 5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">BONUS</span>`:`<span style="background:${catColor[h.category]};color:#f0ece4;font-size:0.56rem;padding:1px 5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em">${h.category}</span>`;
     const starMark2=h.star?`<span style="color:#d4a843;font-size:0.7rem">&#9733;</span>`:'';
-    return`<div style="padding:6px 9px;margin-bottom:2px;background:#0d0d0d;display:flex;justify-content:space-between;align-items:center;border-left:3px solid ${col}">
-      <div style="display:flex;align-items:center;gap:6px">${tag}<span style="color:#f0ece4;font-size:0.78rem">${h.name}</span>${starMark2}</div>
+    return`<div style="padding:6px 9px;margin-bottom:2px;background:#fff;border:1px solid #ede8e0;display:flex;justify-content:space-between;align-items:center;border-left:3px solid ${col}">
+      <div style="display:flex;align-items:center;gap:6px">${tag}<span style="color:#1a1714;font-size:0.78rem">${h.name}</span>${starMark2}</div>
       <span style="color:${col};font-weight:700;font-size:0.72rem">${teamName[h.team]}</span>
     </div>`;
   }).join('');
@@ -980,20 +968,17 @@ function updateDraftTeamLists(){
 // END GAME
 // =============================================
 function showEndGameScreen(){
-  const sc=computeScores(),rankings=[1,2,3,4].map(tn=>({tn,...sc[tn]})).sort((a,b)=>b.total-a.total);
+  const rankings=[1,2,3,4].map(tn=>({tn,cash:gameState.teams[tn].cash})).sort((a,b)=>b.cash-a.cash);
   const tc2={1:{bg:'#c0392b',name:'RED'},2:{bg:'#c89a10',name:'YELLOW'},3:{bg:'#2c6fad',name:'BLUE'},4:{bg:'#1e8a4a',name:'GREEN'}};
   const w=rankings[0];
   document.getElementById('winnerTeamName').textContent=tc2[w.tn].name;document.getElementById('winnerTeamName').style.color=tc2[w.tn].bg;
-  document.getElementById('winnerScore').textContent=`Score: ${w.total}  (Profit ${w.profitScore} / Attendance ${w.attendanceScore})`;
+  document.getElementById('winnerScore').textContent='Final Cash: $'+(w.cash/1000000).toFixed(2)+'M';
   let sHTML='<div style="display:grid;gap:8px">';
   rankings.forEach((t,i)=>{const medals=['1st','2nd','3rd','4th'],col=tc2[t.tn];
-    sHTML+=`<div style="display:grid;grid-template-columns:48px 150px 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:13px;background:#0d0d0d;border-left:4px solid ${col.bg}">
-      <div style="font-family:'Bebas Neue',sans-serif;color:#3a3830;font-size:1rem">${medals[i]}</div>
-      <div style="font-family:'Bebas Neue',sans-serif;color:${col.bg};font-size:1rem;letter-spacing:0.1em">${col.name}</div>
-      <div><div style="font-size:0.62rem;color:#3a3830">Score</div><div style="font-size:1.2rem;font-weight:bold;color:#d4a843">${t.total}</div></div>
-      <div><div style="font-size:0.62rem;color:#3a3830">Profit</div><div style="font-size:0.95rem;color:#38b878">${t.profitScore}/100</div></div>
-      <div><div style="font-size:0.62rem;color:#3a3830">Attendance</div><div style="font-size:0.95rem;color:#3898c8">${t.attendanceScore}/100</div></div>
-      <div><div style="font-size:0.62rem;color:#3a3830">Revenue</div><div style="font-size:0.9rem;color:#f0ece4">$${(t.raw.profit/1000000).toFixed(1)}M</div></div>
+    sHTML+=`<div style="display:grid;grid-template-columns:48px 1fr 1fr;gap:10px;align-items:center;padding:13px;background:#fafaf8;border:1px solid #e0dbd2;border-left:4px solid ${col.bg}">
+      <div style="font-family:'Bebas Neue',sans-serif;color:#b0a898;font-size:1rem">${medals[i]}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;color:${col.bg};font-size:1.1rem;letter-spacing:0.1em">${col.name}</div>
+      <div style="text-align:right"><div style="font-size:0.62rem;color:#7a7060;margin-bottom:2px">Final Cash</div><div style="font-size:1.2rem;font-weight:bold;color:#1a1714">$${(t.cash/1000000).toFixed(2)}M</div></div>
     </div>`;
   });sHTML+='</div>';document.getElementById('finalStandings').innerHTML=sHTML;
 
@@ -1027,7 +1012,7 @@ function closeEndGameModal(){document.getElementById('endGameModal').style.displ
 // =============================================
 // INSURANCE SYSTEM
 // =============================================
-const catIcons = {land:'🦁', air:'🦅', sea:'🦈', ice:'🧊'};
+const catIcons = {land:'', air:'', sea:'', ice:''};
 const catLabel = {land:'LAND',air:'AIR',sea:'SEA',ice:'ICE'};
 const insuranceCostByCategory = {
   land: {0:0, 1:30000000, 2:60000000},
