@@ -7,79 +7,79 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 /* ── PALETTE ──────────────────────────────────────────────────────
-   BG:      #0d0d0d   Surface: #161616   Border: #242424
-   Text:    #f0ece4   Muted:   #7a7060   Faint:  #3a3830
-   Accent:  #d4a843   (amber — used sparingly)
+   BG:      #f5f2ed   Surface: #ffffff   Border: #e0dbd2
+   Text:    #1a1714   Muted:   #7a7060   Faint:  #b0a898
+   Accent:  #c49a28   (amber — used sparingly)
    Land:    #a0522d   Air: #4682a0   Sea: #2e7d62   Ice: #7090a8
    T-Red: #c0392b  T-Yellow: #c89a10  T-Blue: #2c6fad  T-Green: #1e8a4a
 ──────────────────────────────────────────────────────────────── */
 
-body{font-family:'Inter',sans-serif;background:#0d0d0d;min-height:100vh;padding:40px 20px;color:#f0ece4}
+body{font-family:'Inter',sans-serif;background:#f5f2ed;min-height:100vh;padding:40px 20px;color:#1a1714}
 .container{max-width:1400px;margin:0 auto}
 
-header{text-align:center;margin-bottom:48px;border-bottom:1px solid #242424;padding-bottom:28px}
-h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;color:#d4a843;text-shadow:0 0 40px rgba(212,168,67,0.2);margin-bottom:4px}
-.subtitle{font-size:0.7rem;letter-spacing:0.45em;color:#3a3830;text-transform:uppercase;margin-bottom:22px}
+header{text-align:center;margin-bottom:48px;border-bottom:1px solid #e0dbd2;padding-bottom:28px}
+h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;color:#c49a28;text-shadow:0 0 40px rgba(196,154,40,0.15);margin-bottom:4px}
+.subtitle{font-size:0.7rem;letter-spacing:0.45em;color:#b0a898;text-transform:uppercase;margin-bottom:22px}
 .controls{display:flex;flex-direction:column;align-items:center;gap:14px}
 .search-box{position:relative;width:100%;max-width:380px}
-.search-box input{width:100%;padding:9px 15px 9px 38px;border:1px solid #2e2e2e;background:#161616;color:#f0ece4;font-size:0.88rem;outline:none}
-.search-box input::placeholder{color:#3a3830}
-.search-box input:focus{border-color:#d4a843}
-.search-box::before{content:"search";font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#3a3830}
+.search-box input{width:100%;padding:9px 15px 9px 38px;border:1px solid #e0dbd2;background:#fff;color:#1a1714;font-size:0.88rem;outline:none}
+.search-box input::placeholder{color:#b0a898}
+.search-box input:focus{border-color:#c49a28}
+.search-box::before{content:"search";font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#b0a898}
 .filter-row{display:flex;gap:4px;flex-wrap:wrap;justify-content:center}
-.filter-tag{padding:6px 15px;border:1px solid #2a2a2a;background:transparent;color:#3a3830;cursor:pointer;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;transition:all 0.15s}
-.filter-tag:hover{border-color:#7a7060;color:#7a7060}
-.filter-tag.active{background:#d4a843;color:#0d0d0d;border-color:#d4a843;font-weight:700}
+.filter-tag{padding:6px 15px;border:1px solid #d0c8bc;background:transparent;color:#7a7060;cursor:pointer;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;transition:all 0.15s}
+.filter-tag:hover{border-color:#7a7060;color:#1a1714}
+.filter-tag.active{background:#c49a28;color:#fff;border-color:#c49a28;font-weight:700}
 .filter-tag.land.active{background:#a0522d;border-color:#a0522d;color:#f0ece4}
 .filter-tag.air.active{background:#4682a0;border-color:#4682a0;color:#f0ece4}
 .filter-tag.sea.active{background:#2e7d62;border-color:#2e7d62;color:#f0ece4}
 .filter-tag.ice.active{background:#7090a8;border-color:#7090a8;color:#f0ece4}
 .sort-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
-.sort-row label{color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em}
-.sort-row select{padding:6px 10px;border:1px solid #2a2a2a;background:#161616;color:#f0ece4;font-family:'Inter',sans-serif;font-size:0.78rem}
-.results-count{color:#3a3830;text-align:center;margin-bottom:18px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em}
+.sort-row label{color:#7a7060;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em}
+.sort-row select{padding:6px 10px;border:1px solid #d0c8bc;background:#fff;color:#1a1714;font-family:'Inter',sans-serif;font-size:0.78rem}
+.results-count{color:#b0a898;text-align:center;margin-bottom:18px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em}
 
 .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
 
-.animal-card{background:#161616;border:1px solid #242424;height:480px;display:flex;flex-direction:column;transition:border-color 0.2s;position:relative;overflow:hidden}
-.animal-card:hover{border-color:#3a3a3a}
+.animal-card{background:#ffffff;border:1px solid #e0dbd2;height:480px;display:flex;flex-direction:column;transition:border-color 0.2s;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.animal-card:hover{border-color:#c49a28;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
 .animal-card.hidden{display:none}
 .animal-card.land{border-left:3px solid #a0522d}
 .animal-card.air{border-left:3px solid #4682a0}
 .animal-card.sea{border-left:3px solid #2e7d62}
 .animal-card.ice{border-left:3px solid #7090a8}
 
-.card-header{padding:12px 14px 9px;background:#161616;border-bottom:1px solid #1c1c1c}
-.animal-title{color:#f0ece4;font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;font-size:1.15rem;margin-bottom:1px}
-.animal-latin{color:#7a7060;font-size:0.68rem;font-style:italic}
-.animal-meta{color:#3a3830;font-size:0.62rem;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
+.card-header{padding:12px 14px 9px;background:#fff;border-bottom:1px solid #f0ece4}
+.animal-title{color:#1a1714;font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;font-size:1.15rem;margin-bottom:1px}
+.animal-latin{color:#9a8e80;font-size:0.68rem;font-style:italic}
+.animal-meta{color:#b0a898;font-size:0.62rem;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
 
-.image-container{flex:1;background:#111;display:flex;align-items:center;justify-content:center;padding:10px;overflow:hidden;position:relative}
-.image-container img{max-width:100%;max-height:100%;object-fit:contain}
+.image-container{flex:1;background:#f8f5f0;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden;position:relative}
+.image-container img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .category-pip{position:absolute;bottom:7px;right:7px;padding:2px 7px;font-size:0.57rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em}
 .pip-land{background:#a0522d;color:#f0ece4}.pip-air{background:#4682a0;color:#f0ece4}
 .pip-sea{background:#2e7d62;color:#f0ece4}.pip-ice{background:#7090a8;color:#f0ece4}
 
-.card-footer{padding:8px 12px;background:#121212;border-top:1px solid #1c1c1c}
+.card-footer{padding:8px 12px;background:#fafaf8;border-top:1px solid #ede8e0}
 .ticket-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
 .ticket-chip{display:flex;flex-direction:column;align-items:center;padding:4px 2px;font-size:0.57rem;line-height:1.3}
 .ticket-city{font-weight:700;text-transform:uppercase;opacity:0.6}
 .ticket-price{font-weight:600;font-size:0.67rem}
 
 /* Each city gets its own distinct hue — no two are the same */
-.city-newyork   {background:#1c1010;color:#e07070}
-.city-london    {background:#10101c;color:#7080d0}
-.city-paris     {background:#1a1800;color:#d4b040}
-.city-dubai     {background:#08101a;color:#3898c8}
-.city-capetown  {background:#081410;color:#38b878}
-.city-mexicocity{background:#180810;color:#c060a0}
-.city-saopaulo  {background:#12081a;color:#9060c8}
-.city-tokyo     {background:#180c00;color:#e08040}
-.city-shanghai  {background:#08141a;color:#38c0d0}
-.city-moscow    {background:#141414;color:#a8a8a8}
+.city-newyork   {background:#fdf0f0;color:#c04040}
+.city-london    {background:#f0f0fd;color:#4050b0}
+.city-paris     {background:#fdf8e0;color:#a07800}
+.city-dubai     {background:#e8f4fd;color:#1870a0}
+.city-capetown  {background:#e8faf0;color:#188050}
+.city-mexicocity{background:#fdf0f8;color:#983080}
+.city-saopaulo  {background:#f4f0fd;color:#6030a0}
+.city-tokyo     {background:#fdf4e8;color:#b05010}
+.city-shanghai  {background:#e8fafc;color:#0888a0}
+.city-moscow    {background:#f5f5f5;color:#606060}
 
-.add-btn{position:absolute;top:9px;right:9px;width:28px;height:28px;background:#d4a843;color:#0d0d0d;border:none;font-size:1.3rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}
-.add-btn:hover{background:#e8c060}
+.add-btn{position:absolute;top:9px;right:9px;width:28px;height:28px;background:#c49a28;color:#fff;border:none;font-size:1.3rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1}
+.add-btn:hover{background:#a07820}
 .team-badge-container{position:absolute;top:9px;right:44px;z-index:2}
 .team-badge{padding:4px 9px;font-size:0.62rem;font-weight:700;display:flex;align-items:center;gap:4px;text-transform:uppercase}
 .team-badge.team-1{background:#c0392b;color:#fff}
@@ -89,16 +89,16 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 .team-badge .remove{cursor:pointer;opacity:0.65;padding:0 2px}
 .team-badge .remove:hover{opacity:1}
 
-.hdr-btn{margin-top:10px;padding:9px 26px;background:transparent;color:#d4a843;border:1px solid #d4a843;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.2em;cursor:pointer;transition:all 0.15s}
-.hdr-btn:hover{background:#d4a843;color:#0d0d0d}
+.hdr-btn{margin-top:10px;padding:9px 26px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.2em;cursor:pointer;transition:all 0.15s}
+.hdr-btn:hover{background:#c49a28;color:#fff}
 
 #competitiveAnalysis{margin-bottom:28px;display:none}
-#competitiveAnalysis h2{text-align:center;margin-bottom:14px;color:#d4a843;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.18em}
+#competitiveAnalysis h2{text-align:center;margin-bottom:14px;color:#c49a28;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.18em}
 #competitiveAnalysis table{width:100%;border-collapse:collapse;font-size:0.8rem}
-#competitiveAnalysis thead tr{background:#161616}
-#competitiveAnalysis th{padding:9px 10px;text-align:left;color:#3a3830;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid #242424;font-weight:600}
-#competitiveAnalysis tbody tr{border-bottom:1px solid #1a1a1a}
-#competitiveAnalysis td{padding:8px 10px;color:#f0ece4}
+#competitiveAnalysis thead tr{background:#f0ece4}
+#competitiveAnalysis th{padding:9px 10px;text-align:left;color:#7a7060;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;border-bottom:1px solid #e0dbd2;font-weight:600}
+#competitiveAnalysis tbody tr{border-bottom:1px solid #f0ece4}
+#competitiveAnalysis td{padding:8px 10px;color:#1a1714}
 
 .map-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#080808;z-index:200;display:none;flex-direction:column}
 .map-modal.show{display:flex}
@@ -141,8 +141,8 @@ svg.map-svg{width:100%;height:100%}
 .log-container{background:#161616;padding:9px;max-height:240px;overflow-y:auto;border:1px solid #242424}
 .log-entry{color:#7a7060;font-size:0.66rem;margin-bottom:3px;padding:3px 5px;background:#0d0d0d}
 
-#draftModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#080808;z-index:10000;overflow-y:auto}
-.draft-inner{max-width:1400px;margin:0 auto;padding:28px;position:relative}
+#draftModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f2ed;z-index:10000;overflow-y:auto}
+.draft-inner{max-width:1400px;margin:0 auto;padding:28px;position:relative;color:#1a1714}
 
 #endGameModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:20000;overflow-y:auto}
 </style>
@@ -263,22 +263,22 @@ svg.map-svg{width:100%;height:100%}
 <!-- DRAFT MODAL -->
 <div id="draftModal">
   <div class="draft-inner">
-    <button onclick="closeDraftModal()" style="position:absolute;top:20px;right:20px;background:#7a1a1a;color:#f0ece4;border:none;padding:8px 18px;font-size:0.82rem;cursor:pointer;font-family:'Bebas Neue',sans-serif;letter-spacing:0.15em">CLOSE</button>
-    <h1 style="text-align:center;color:#d4a843;margin-bottom:5px;font-size:2.8rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em">LIZARD KINGS DRAFT</h1>
-    <p style="text-align:center;color:#3a3830;margin-bottom:22px;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase">Animals and bonus cards are all in the same pool &mdash; pick anything, in any order</p>
+    <button onclick="closeDraftModal()" style="position:absolute;top:20px;right:20px;background:#c0392b;color:#fff;border:none;padding:8px 18px;font-size:0.82rem;cursor:pointer;font-family:'Bebas Neue',sans-serif;letter-spacing:0.15em">CLOSE</button>
+    <h1 style="text-align:center;color:#c49a28;margin-bottom:10px;font-size:2.8rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.22em">LIZARD KINGS DRAFT</h1>
+    <div id="draftTurnBanner" style="border:2px solid #e0dbd2;padding:12px 20px;margin-bottom:20px;background:#fff;transition:border-color 0.3s"></div>
 
     <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:22px">
-      <div id="draftAnimalCard" style="background:#161616;padding:16px;border:1px solid #242424;min-height:260px">
-        <div style="text-align:center;color:#3a3830;padding:36px 16px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em">Select an item to draft</div>
+      <div id="draftAnimalCard" style="background:#fff;padding:16px;border:1px solid #e0dbd2;min-height:260px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+        <div style="text-align:center;color:#b0a898;padding:36px 16px;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em">Select an item to draft</div>
       </div>
-      <div style="background:#161616;padding:16px;border:1px solid #242424">
+      <div style="background:#fff;padding:16px;border:1px solid #e0dbd2;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
         <div style="margin-bottom:14px">
-          <select id="draftAnimalSelect" onchange="selectItemForDraft()" style="font-size:0.88rem;padding:8px 12px;border:1px solid #2a2a2a;background:#0d0d0d;color:#f0ece4;width:100%">
+          <select id="draftAnimalSelect" onchange="selectItemForDraft()" style="font-size:0.88rem;padding:8px 12px;border:1px solid #d0c8bc;background:#fff;color:#1a1714;width:100%">
             <option value="">&#x25BC; Choose an Item to Draft</option>
           </select>
         </div>
         <div id="draftInterface" style="display:none">
-          <p style="color:#3a3830;margin-bottom:12px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em">Assign to team:</p>
+          <p style="color:#7a7060;margin-bottom:12px;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em">Assign to team:</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <button onclick="draftToTeam(1)" style="background:#c0392b;color:#fff;border:none;padding:16px;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;cursor:pointer;letter-spacing:0.12em;transition:filter 0.15s" onmouseover="this.style.filter='brightness(1.15)'" onmouseout="this.style.filter=''">RED</button>
             <button onclick="draftToTeam(2)" style="background:#c89a10;color:#fff;border:none;padding:16px;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;cursor:pointer;letter-spacing:0.12em;transition:filter 0.15s" onmouseover="this.style.filter='brightness(1.15)'" onmouseout="this.style.filter=''">YELLOW</button>
@@ -291,19 +291,19 @@ svg.map-svg{width:100%;height:100%}
 
     <!-- Team Rosters -->
     <div style="margin-bottom:20px">
-      <h2 style="color:#7a7060;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;margin-bottom:10px;border-bottom:1px solid #242424;padding-bottom:6px">DRAFT BOARD</h2>
+      <h2 style="color:#7a7060;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;margin-bottom:10px;border-bottom:1px solid #e0dbd2;padding-bottom:6px">DRAFT BOARD</h2>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-        <div style="background:#161616;padding:10px;border:1px solid #242424;border-left:3px solid #c0392b"><div style="color:#c0392b;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">RED</div><div id="draftTeam1Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
-        <div style="background:#161616;padding:10px;border:1px solid #242424;border-left:3px solid #c89a10"><div style="color:#c89a10;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">YELLOW</div><div id="draftTeam2Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
-        <div style="background:#161616;padding:10px;border:1px solid #242424;border-left:3px solid #2c6fad"><div style="color:#2c6fad;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">BLUE</div><div id="draftTeam3Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
-        <div style="background:#161616;padding:10px;border:1px solid #242424;border-left:3px solid #1e8a4a"><div style="color:#1e8a4a;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">GREEN</div><div id="draftTeam4Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
+        <div style="background:#161616;padding:10px;border:1px solid #e0dbd2;border-left:3px solid #c0392b;background:#fff"><div style="color:#c0392b;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">RED</div><div id="draftTeam1Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
+        <div style="background:#161616;padding:10px;border:1px solid #e0dbd2;border-left:3px solid #c89a10;background:#fff"><div style="color:#c89a10;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">YELLOW</div><div id="draftTeam2Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
+        <div style="background:#161616;padding:10px;border:1px solid #e0dbd2;border-left:3px solid #2c6fad;background:#fff"><div style="color:#2c6fad;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">BLUE</div><div id="draftTeam3Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
+        <div style="background:#161616;padding:10px;border:1px solid #e0dbd2;border-left:3px solid #1e8a4a;background:#fff"><div style="color:#1e8a4a;font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;margin-bottom:6px">GREEN</div><div id="draftTeam4Animals" style="font-size:0.7rem;color:#7a7060"></div></div>
       </div>
     </div>
 
     <!-- Pick Log -->
-    <div style="background:#161616;padding:14px;border:1px solid #242424">
-      <h2 style="color:#7a7060;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;margin-bottom:9px;border-bottom:1px solid #242424;padding-bottom:5px">PICK LOG</h2>
-      <div id="draftHistory"><p style="color:#3a3830;font-size:0.72rem;text-align:center">No picks yet</p></div>
+    <div style="background:#fff;padding:14px;border:1px solid #e0dbd2;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+      <h2 style="color:#7a7060;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;margin-bottom:9px;border-bottom:1px solid #e0dbd2;padding-bottom:5px">PICK LOG</h2>
+      <div id="draftHistory"><p style="color:#b0a898;font-size:0.72rem;text-align:center">No picks yet</p></div>
     </div>
   </div>
 </div>
@@ -325,13 +325,13 @@ svg.map-svg{width:100%;height:100%}
 </div>
 
 <!-- INSURANCE MODAL -->
-<div id="insuranceModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:15000;overflow-y:auto">
-  <div style="max-width:900px;margin:40px auto;padding:32px;background:#161616;border:1px solid #d4a843">
-    <h1 style="text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.22em;color:#d4a843;margin-bottom:6px">INSURANCE</h1>
-    <p style="text-align:center;color:#7a7060;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px">Every season, one animal escapes. If yours escapes you forfeit all revenue for that city.</p>
-    <p style="text-align:center;color:#3a3830;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px">Cover a full category · Full ($20M = 100% revenue protected) · Half ($10M = 50% protected)</p>
+<div id="insuranceModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f2ed;z-index:15000;overflow-y:auto">
+  <div style="max-width:900px;margin:40px auto;padding:32px;background:#fff;border:1px solid #c49a28;box-shadow:0 4px 24px rgba(0,0,0,0.1)">
+    <h1 style="text-align:center;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.22em;color:#c49a28;margin-bottom:6px">INSURANCE</h1>
+    <p style="text-align:center;color:#4a4440;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px">Every season, one animal escapes. If yours escapes you forfeit all revenue for that city.</p>
+    <p style="text-align:center;color:#7a7060;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px">Cover a full category by type · costs vary by category value</p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px" id="insurancePanels"></div>
-    <p style="text-align:center;color:#3a3830;font-size:0.68rem;margin-bottom:18px">Costs are deducted immediately. All teams must decide before travel begins.</p>
+    <p style="text-align:center;color:#7a7060;font-size:0.68rem;margin-bottom:18px">Costs are deducted immediately. All teams must decide before travel begins.</p>
     <div style="text-align:center">
       <button onclick="confirmInsurance()" style="padding:12px 40px;background:#d4a843;color:#0d0d0d;border:none;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.2em;cursor:pointer">LOCK IN &amp; START SEASON</button>
     </div>
@@ -461,6 +461,7 @@ const cityData={
 
 const draftHistory=[];
 let currentDraftAnimalIdx=null,currentDraftIsBonus=false,currentDraftBonusId=null;
+let draftPickNumber=0; // tracks whose turn it is: pick % 4 → team
 let gameState={round:1,maxRounds:8,
   insurancePurchased:false,
   escapedAnimals:[],
@@ -505,7 +506,7 @@ function initGallery(){
       <div class="card-footer">
         <div class="ticket-grid">${chips}</div>
         <div style="text-align:center;margin-top:5px;padding-top:5px;border-top:1px solid #1c1c1c">
-          <span style="font-size:0.6rem;color:#3a3830;text-transform:uppercase;letter-spacing:0.06em">Total </span>
+          <span style="font-size:0.6rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.06em">Total </span>
           <span style="font-size:0.82rem;font-weight:bold;color:#d4a843">$${total}</span>
         </div>
       </div>
@@ -852,7 +853,7 @@ function resetGame(){
            2:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}},
            3:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}},
            4:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}}}};
-  document.getElementById('logEntries').innerHTML='';
+  draftPickNumber=0;document.getElementById('logEntries').innerHTML='';
   for(let i=1;i<=4;i++)document.getElementById(`dest${i}`).value='';
   document.querySelectorAll('.team-badge-container').forEach(c=>c.innerHTML='');document.querySelectorAll('.animal-card').forEach(c=>delete c.dataset.team);
   drawTeams();populateDestinationDropdowns();updateTeamDisplay();updateCompetitiveAnalysis();
@@ -863,10 +864,13 @@ function resetGame(){
 // =============================================
 function openDraftModal(){refreshDraftDropdown();updateDraftTeamLists();document.getElementById('draftModal').style.display='block';}
 function closeDraftModal(){document.getElementById('draftModal').style.display='none';}
+function currentDraftTeam(){
+  return (draftPickNumber % 4) + 1; // 1,2,3,4,1,2,3,4...
+}
+
 function refreshDraftDropdown(){
   const sel=document.getElementById('draftAnimalSelect');
   sel.innerHTML='<option value="">&#x25BC; Choose an Item to Draft</option>';
-  // Animals (undrafted only)
   const undraftedAnimals=[];
   animals.forEach((a,idx)=>{
     const drafted=Object.values(gameState.teams).some(t=>t.artworks.some(aw=>aw.idx===idx));
@@ -881,7 +885,28 @@ function refreshDraftDropdown(){
     });
     sel.appendChild(og);
   }
-  // (bonus cards removed)
+  updateDraftTurnIndicator();
+}
+
+function updateDraftTurnIndicator(){
+  const tn = currentDraftTeam();
+  const col = {1:'#c0392b',2:'#c89a10',3:'#2c6fad',4:'#1e8a4a'};
+  const name = {1:'RED',2:'YELLOW',3:'BLUE',4:'GREEN'};
+  const el = document.getElementById('draftTurnBanner');
+  if(!el) return;
+  const totalDrafted = Object.values(gameState.teams).reduce((s,t)=>s+t.artworks.length,0);
+  if(totalDrafted >= 24){
+    el.innerHTML = "<div style=\"text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.2em;color:#1e8a4a\">DRAFT COMPLETE — ALL 24 ANIMALS PICKED</div>";
+    el.style.borderColor='#1e8a4a';
+    return;
+  }
+  el.style.borderColor = col[tn];
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px">
+      <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;color:#7a7060">Pick #${draftPickNumber+1} &nbsp;·&nbsp; On the clock:</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.18em;color:${col[tn]}">${name[tn]}</div>
+      <div style="display:flex;gap:6px">${[1,2,3,4].map(t=>`<div style="width:28px;height:28px;background:${t===tn?col[t]:'#e8e4dc'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.58rem;font-weight:700;color:${t===tn?'#fff':'#b0a898'}">${name[t][0]}</div>`).join('')}</div>
+    </div>`;
 }
 
 function selectItemForDraft(){
@@ -914,13 +939,19 @@ function selectItemForDraft(){
 // alias for legacy call
 function selectAnimalForDraft(){selectItemForDraft();}
 function draftToTeam(teamNum){
+  // Enforce turn order
+  const expectedTeam = currentDraftTeam();
+  if(teamNum !== expectedTeam){
+    alert(teamName[expectedTeam]+' is on the clock! (Pick #'+(draftPickNumber+1)+')');
+    return;
+  }
   // bonus cards removed
   if(currentDraftAnimalIdx===null||isNaN(currentDraftAnimalIdx))return;
   const a=animals[currentDraftAnimalIdx];assignAnimalToTeam(currentDraftAnimalIdx,teamNum,null);
   draftHistory.push({type:'animal',name:a.title,category:a.category,star:!!a.star,team:teamNum});
+  draftPickNumber++;
   updateDraftTeamLists();updateDraftHistory();refreshDraftDropdown();
   currentDraftAnimalIdx=null;document.getElementById('draftAnimalSelect').value='';selectItemForDraft();
-  alert(teamName[teamNum]+' drafted '+a.title+'!');
 }
 function updateDraftHistory(){
   const div=document.getElementById('draftHistory');
@@ -998,7 +1029,13 @@ function closeEndGameModal(){document.getElementById('endGameModal').style.displ
 // =============================================
 const catIcons = {land:'🦁', air:'🦅', sea:'🦈', ice:'🧊'};
 const catLabel = {land:'LAND',air:'AIR',sea:'SEA',ice:'ICE'};
-const insuranceCost = {0:0, 1:10000000, 2:20000000};
+const insuranceCostByCategory = {
+  land: {0:0, 1:30000000, 2:60000000},
+  sea:  {0:0, 1:25000000, 2:50000000},
+  ice:  {0:0, 1:20000000, 2:40000000},
+  air:  {0:0, 1:15000000, 2:30000000}
+};
+function insuranceCostFor(cat, level){ return (insuranceCostByCategory[cat]||insuranceCostByCategory.air)[level]||0; }
 
 function allAnimalsDrafted(){
   const total = Object.values(gameState.teams).reduce((s,t)=>s+t.artworks.length,0);
@@ -1025,27 +1062,27 @@ function renderInsurancePanels(){
     const catRows = cats.map(cat => {
       const teamAnimals = t.artworks.filter(a=>animals[a.idx].category===cat);
       if(teamAnimals.length===0) return '';
-      const names = teamAnimals.map(a=>`<span style="font-size:0.58rem;color:#7a7060">${animals[a.idx].title}</span>`).join(', ');
-      return `<div style="margin-bottom:10px;padding:8px;background:#0d0d0d;border:1px solid #1e1e1e">
-        <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:${catColor[cat]};margin-bottom:3px">${catLabel[cat]} (${teamAnimals.length})</div>
+      const names = teamAnimals.map(a=>`<span style="font-size:0.58rem;color:#9a8e80">${animals[a.idx].title}</span>`).join(', ');
+      return `<div style="margin-bottom:10px;padding:8px;background:#fafaf8;border:1px solid #ede8e0">
+        <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:${catColor[cat]};margin-bottom:4px">${catLabel[cat]} (${teamAnimals.length})</div>
         <div style="margin-bottom:6px;line-height:1.5">${names}</div>
         <div style="display:flex;gap:4px;flex-wrap:wrap">
           <button onclick="setInsurance(${tn},'${cat}',0)" id="ins_${tn}_${cat}_0"
-            style="flex:1;min-width:48px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #2a2a2a;background:${ins[cat]===0?'#2a2a2a':'#0d0d0d'};color:${ins[cat]===0?'#f0ece4':'#3a3830'}">NONE</button>
+            style="flex:1;min-width:52px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #d0c8bc;background:${ins[cat]===0?'#e0dbd2':'#fff'};color:${ins[cat]===0?'#1a1714':'#b0a898'}">NONE</button>
           <button onclick="setInsurance(${tn},'${cat}',1)" id="ins_${tn}_${cat}_1"
-            style="flex:1;min-width:48px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #2a2a2a;background:${ins[cat]===1?catColor[cat]:'#0d0d0d'};color:${ins[cat]===1?'#fff':'#3a3830'}">HALF<br>$10M</button>
+            style="flex:1;min-width:52px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #d0c8bc;background:${ins[cat]===1?catColor[cat]:'#fff'};color:${ins[cat]===1?'#fff':'#7a7060'}">HALF<br>$${(insuranceCostFor(cat,1)/1000000).toFixed(0)}M</button>
           <button onclick="setInsurance(${tn},'${cat}',2)" id="ins_${tn}_${cat}_2"
-            style="flex:1;min-width:48px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #2a2a2a;background:${ins[cat]===2?catColor[cat]:'#0d0d0d'};color:${ins[cat]===2?'#fff':'#3a3830'}">FULL<br>$20M</button>
+            style="flex:1;min-width:52px;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #d0c8bc;background:${ins[cat]===2?catColor[cat]:'#fff'};color:${ins[cat]===2?'#fff':'#7a7060'}">FULL<br>$${(insuranceCostFor(cat,2)/1000000).toFixed(0)}M</button>
         </div>
       </div>`;
     }).filter(r=>r).join('');
 
-    const totalCost = cats.reduce((s,cat)=>s+insuranceCost[ins[cat]],0);
-    return `<div style="background:#161616;padding:12px;border:1px solid #242424;border-left:3px solid ${teamCol[tn]}">
+    const totalCost = cats.reduce((s,cat)=>s+insuranceCostFor(cat,ins[cat]||0),0);
+    return `<div style="background:#fff;padding:12px;border:1px solid #e0dbd2;border-left:3px solid ${teamCol[tn]};box-shadow:0 2px 8px rgba(0,0,0,0.06)">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.12em;color:${teamCol[tn]};margin-bottom:10px">${teamName[tn]}</div>
       ${catRows}
-      <div style="border-top:1px solid #242424;padding-top:8px;font-size:0.7rem;color:#7a7060">
-        Insurance cost: <strong style="color:${totalCost>0?'#c0392b':'#3a3830'}">$${(totalCost/1000000).toFixed(0)}M</strong>
+      <div style="border-top:1px solid #e0dbd2;padding-top:8px;font-size:0.7rem;color:#7a7060">
+        Insurance cost: <strong style="color:${totalCost>0?'#c0392b':'#b0a898'}">$${(totalCost/1000000).toFixed(0)}M</strong>
       </div>
     </div>`;
   }).join('');
@@ -1062,7 +1099,7 @@ function confirmInsurance(){
   [1,2,3,4].forEach(tn=>{
     const ins = gameState.teams[tn].insurance || {};
     ['land','air','sea','ice'].forEach(cat=>{
-      const cost = insuranceCost[ins[cat]||0];
+      const cost = insuranceCostFor(cat, ins[cat]||0);
       gameState.teams[tn].cash -= cost;
     });
   });
