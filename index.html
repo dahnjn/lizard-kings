@@ -54,8 +54,8 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 .animal-latin{color:#9a8e80;font-size:0.68rem;font-style:italic}
 .animal-meta{color:#b0a898;font-size:0.62rem;margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
 
-.image-container{flex:1;background:linear-gradient(180deg,#edeae4 0%,#f5f2ed 100%);display:flex;align-items:center;justify-content:center;padding:18px 14px 10px;overflow:hidden;position:relative}
-.image-container img{max-width:88%;max-height:88%;object-fit:contain;object-position:center bottom}
+.image-container{flex:1;background:#edeae4;display:flex;align-items:center;justify-content:center;padding:20px 16px;overflow:hidden;position:relative}
+.image-container img{max-width:75%;max-height:75%;object-fit:contain;object-position:center center}
 .category-pip{position:absolute;bottom:7px;right:7px;padding:2px 7px;font-size:0.57rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em}
 .pip-land{background:#a0522d;color:#f0ece4}.pip-air{background:#4682a0;color:#f0ece4}
 .pip-sea{background:#2e7d62;color:#f0ece4}.pip-ice{background:#7090a8;color:#f0ece4}
@@ -160,6 +160,7 @@ svg.map-svg{width:100%;height:100%}
       <button class="filter-tag air" data-category="air">Air</button>
       <button class="filter-tag sea" data-category="sea">Sea</button>
       <button class="filter-tag ice" data-category="ice">Ice</button>
+      <button class="filter-tag" data-category="star" style="color:#c49a28;border-color:#c49a28">&#9733; Stars</button>
     </div>
     <div class="sort-row">
       <label>Sort by City:</label>
@@ -207,7 +208,7 @@ svg.map-svg{width:100%;height:100%}
   <div class="map-header">
     <div class="map-title">LIZARD KINGS &mdash; WORLD TOUR</div>
     <div style="display:flex;align-items:center;gap:16px">
-      <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Seasons:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
+      <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Years:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
       <button onclick="openInsuranceModal()" style="padding:6px 16px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer" title="Buy or review insurance coverage">INSURANCE</button>
       <button class="map-close" id="mapClose">CLOSE</button>
     </div>
@@ -221,8 +222,8 @@ svg.map-svg{width:100%;height:100%}
       </div>
     </div>
     <div class="sidebar">
-      <div class="round-info"><label>Seasons Remaining</label><span id="roundsRemaining">8</span></div>
-      <div style="background:#161616;padding:10px;margin-bottom:10px;border:1px solid #242424">
+      <div class="round-info"><label>Years Remaining</label><span id="roundsRemaining">8</span></div>
+      <div style="background:#fafaf8;padding:10px;margin-bottom:10px;border:1px solid #e0dbd2">
         <h3>Scoreboard</h3><div id="scoreboard"></div>
       </div>
       <div class="game-controls">
@@ -575,7 +576,11 @@ document.querySelectorAll('.filter-tag').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-tag').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');const cat=btn.dataset.category;
-    document.querySelectorAll('.animal-card').forEach(c=>c.classList.toggle('hidden',cat!=='all'&&c.dataset.category!==cat));
+    document.querySelectorAll('.animal-card').forEach(c=>{
+      if(cat==='all') c.classList.remove('hidden');
+      else if(cat==='star') c.classList.toggle('hidden',!animals[parseInt(c.dataset.idx)].star);
+      else c.classList.toggle('hidden',c.dataset.category!==cat);
+    });
     updateCount();
   });
 });
@@ -902,7 +907,7 @@ function selectItemForDraft(){
   const val=document.getElementById('draftAnimalSelect').value;
   if(!val){
     document.getElementById('draftInterface').style.display='none';
-    document.getElementById('draftAnimalCard').innerHTML='<div style="text-align:center;color:#3a3830;padding:36px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em">Select an item</div>';
+    document.getElementById('draftAnimalCard').innerHTML='<div style="text-align:center;color:#b0a898;padding:36px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em">Select an animal to preview</div>';
     return;
   }
   if(val.startsWith('a:')){
@@ -910,16 +915,18 @@ function selectItemForDraft(){
     currentDraftAnimalIdx=idx;currentDraftIsBonus=false;currentDraftBonusId=null;
     const a=animals[idx],total=Object.values(a.cities).reduce((s,v)=>s+v,0);
     const starBadge=a.star?`<span style="color:#d4a843;font-size:1.2rem;margin-left:6px">&#9733;</span>`:'';
-    const chips=Object.entries(a.cities).map(([c,p])=>`<div style="background:#0d0d0d;padding:4px 2px;text-align:center;border:1px solid #1e1e1e"><div style="font-weight:700;font-size:0.58rem;color:#3a3830;text-transform:uppercase">${cityNames[c]}</div><div style="color:#d4a843;font-weight:600;font-size:0.78rem">$${p}</div></div>`).join('');
+    const chips=Object.entries(a.cities).map(([c,p])=>`<div style="background:#fafaf8;padding:4px 2px;text-align:center;border:1px solid #e0dbd2"><div style="font-weight:700;font-size:0.58rem;color:#7a7060;text-transform:uppercase">${cityNames[c]}</div><div style="color:#c49a28;font-weight:600;font-size:0.78rem">$${p}</div></div>`).join('');
+    const imgHtml = a.img ? `<div style="background:#edeae4;height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;border-radius:2px"><img src="${a.img}" style="max-width:70%;max-height:140px;object-fit:contain" onerror="this.parentElement.style.display='none'"></div>` : '';
     document.getElementById('draftAnimalCard').innerHTML=`
-      <div style="font-size:0.6rem;color:#3a3830;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Animal</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#f0ece4;letter-spacing:0.1em;margin-bottom:2px;display:flex;align-items:baseline">${a.title}${starBadge}</div>
+      ${imgHtml}
+      <div style="font-size:0.6rem;color:#7a7060;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Animal</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#1a1714;letter-spacing:0.1em;margin-bottom:2px;display:flex;align-items:baseline">${a.title}${starBadge}</div>
       <div style="font-size:0.66rem;color:#7a7060;font-style:italic;margin-bottom:4px">${a.latin}</div>
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:9px">
-        <div style="display:inline-block;padding:2px 7px;background:${catColor[a.category]};color:#f0ece4;font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em">${a.category}</div>
-        ${a.star?`<div style="font-size:0.62rem;color:#d4a843;font-weight:600">STAR ANIMAL — wins market ties</div>`:''}
+        <div style="display:inline-block;padding:2px 7px;background:${catColor[a.category]};color:#fff;font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em">${a.category}</div>
+        ${a.star?'<div style="font-size:0.62rem;color:#c49a28;font-weight:600">★ STAR ANIMAL — wins market ties</div>':''}
       </div>
-      <div style="font-size:0.68rem;color:#3a3830;margin-bottom:8px">Total value: <strong style="color:#d4a843">$${total}</strong></div>
+      <div style="font-size:0.68rem;color:#7a7060;margin-bottom:8px">Total value: <strong style="color:#c49a28">$${total}</strong></div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px">${chips}</div>`;
     document.getElementById('draftInterface').style.display='block';
   }
@@ -1251,3 +1258,6 @@ initGallery();
 updateCount();
 updateCompetitiveAnalysis();
 </script>
+
+</body>
+</html>
