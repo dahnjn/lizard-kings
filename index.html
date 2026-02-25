@@ -100,37 +100,37 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:4rem;letter-spacing:0.22em;colo
 #competitiveAnalysis tbody tr{border-bottom:1px solid #f0ece4}
 #competitiveAnalysis td{padding:8px 10px;color:#1a1714}
 
-.map-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#080808;z-index:200;display:none;flex-direction:column}
+.map-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f2ed;z-index:200;display:none;flex-direction:column}
 .map-modal.show{display:flex}
-.map-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0d0d0d;border-bottom:1px solid #242424}
-.map-title{color:#d4a843;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.2em}
-.map-close{background:transparent;color:#7a7060;border:1px solid #2a2a2a;padding:6px 14px;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.05em}
-.map-close:hover{color:#f0ece4;border-color:#7a7060}
+.map-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#fff;border-bottom:1px solid #e0dbd2}
+.map-title{color:#c49a28;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.2em}
+.map-close{background:transparent;color:#7a7060;border:1px solid #d0c8bc;padding:6px 14px;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.05em}
+.map-close:hover{color:#1a1714;border-color:#7a7060}
 .map-content{flex:1;display:flex;overflow:hidden}
-.map-area{flex:1;background:#080808;display:flex;align-items:center;justify-content:center;padding:20px}
+.map-area{flex:1;background:#f5f2ed;display:flex;align-items:center;justify-content:center;padding:20px}
 .map-container{position:relative;width:100%;max-width:1200px;height:100%;max-height:800px}
 svg.map-svg{width:100%;height:100%}
 .city-circle{cursor:pointer;transition:all 0.2s}.city-circle:hover{filter:brightness(1.4)}
-.city-label{fill:#f0ece4;font-size:15px;font-weight:bold;text-anchor:middle;font-family:'Bebas Neue',sans-serif;letter-spacing:2px}
-.city-pop-label{fill:#d4a843;font-size:12px;font-weight:bold;text-anchor:middle}
-.connection-line{stroke:#1e1e1e;stroke-width:2}
+.city-label{fill:#1a1714;font-size:15px;font-weight:bold;text-anchor:middle;font-family:'Bebas Neue',sans-serif;letter-spacing:2px}
+.city-pop-label{fill:#c49a28;font-size:12px;font-weight:bold;text-anchor:middle}
+.connection-line{stroke:#c8c0b4;stroke-width:2}
 .team-marker{transition:all 0.2s;cursor:pointer}
-.starting-position{fill:#d4a843;stroke:#080808;stroke-width:2;opacity:0.12}
-.sidebar{width:295px;background:#0d0d0d;padding:16px;overflow-y:auto;border-left:1px solid #1e1e1e}
-.sidebar h3{color:#3a3830;font-size:0.62rem;margin-bottom:9px;text-transform:uppercase;letter-spacing:0.16em;border-bottom:1px solid #1e1e1e;padding-bottom:5px}
-.round-info{background:#161616;padding:10px 12px;margin-bottom:10px;border:1px solid #242424}
-.round-info label{color:#3a3830;font-size:0.65rem;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em}
-.round-info span{color:#d4a843;font-size:1.4rem;font-weight:bold;font-family:'Bebas Neue',sans-serif}
-.team-panel{background:#161616;padding:10px;margin-bottom:7px;border-left:3px solid;border:1px solid #1e1e1e}
+.starting-position{fill:#c49a28;stroke:#f5f2ed;stroke-width:2;opacity:0.18}
+.sidebar{width:295px;background:#fff;padding:16px;overflow-y:auto;border-left:1px solid #e0dbd2}
+.sidebar h3{color:#b0a898;font-size:0.62rem;margin-bottom:9px;text-transform:uppercase;letter-spacing:0.16em;border-bottom:1px solid #e0dbd2;padding-bottom:5px}
+.round-info{background:#fafaf8;padding:10px 12px;margin-bottom:10px;border:1px solid #e0dbd2}
+.round-info label{color:#7a7060;font-size:0.65rem;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.08em}
+.round-info span{color:#c49a28;font-size:1.4rem;font-weight:bold;font-family:'Bebas Neue',sans-serif}
+.team-panel{background:#fafaf8;padding:10px;margin-bottom:7px;border-left:3px solid;border:1px solid #e0dbd2}
 .team-panel.team-1{border-left:3px solid #c0392b}
 .team-panel.team-2{border-left:3px solid #c89a10}
 .team-panel.team-3{border-left:3px solid #2c6fad}
 .team-panel.team-4{border-left:3px solid #1e8a4a}
-.team-panel h4{color:#f0ece4;font-size:0.75rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.12em}
-.team-panel select{width:100%;padding:5px;background:#0d0d0d;color:#f0ece4;border:1px solid #2a2a2a;margin-bottom:4px;font-family:'Inter',sans-serif;font-size:0.74rem}
-.team-stat{display:flex;justify-content:space-between;color:#7a7060;font-size:0.68rem;margin-top:2px}
-.game-controls{padding:9px;background:#161616;margin-bottom:10px;border:1px solid #242424}
-.game-controls button{width:100%;padding:7px;margin-bottom:5px;color:#f0ece4;border:none;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.1em;transition:filter 0.15s}
+.team-panel h4{color:#1a1714;font-size:0.75rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.12em}
+.team-panel select{width:100%;padding:5px;background:#fff;color:#1a1714;border:1px solid #d0c8bc;margin-bottom:4px;font-family:'Inter',sans-serif;font-size:0.74rem}
+.team-stat{display:flex;justify-content:space-between;color:#9a8e80;font-size:0.68rem;margin-top:2px}
+.game-controls{padding:9px;background:#fafaf8;margin-bottom:10px;border:1px solid #e0dbd2}
+.game-controls button{width:100%;padding:7px;margin-bottom:5px;color:#fff;border:none;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.1em;transition:filter 0.15s}
 .game-controls button:last-child{margin-bottom:0}
 .game-controls button:hover{filter:brightness(1.2)}
 #nextRound{background:#1e8a4a}
@@ -138,8 +138,8 @@ svg.map-svg{width:100%;height:100%}
 #saveGame{background:#1a3a6a}
 #loadGame{background:#4a3a0a}
 .rounds-input{width:48px;padding:3px 5px;margin-left:6px;border:1px solid #2a2a2a;background:#161616;color:#d4a843;font-family:'Inter',sans-serif;font-size:0.78rem}
-.log-container{background:#161616;padding:9px;max-height:240px;overflow-y:auto;border:1px solid #242424}
-.log-entry{color:#7a7060;font-size:0.66rem;margin-bottom:3px;padding:3px 5px;background:#0d0d0d}
+.log-container{background:#fafaf8;padding:9px;max-height:240px;overflow-y:auto;border:1px solid #e0dbd2}
+.log-entry{color:#7a7060;font-size:0.66rem;margin-bottom:3px;padding:3px 5px;background:#f5f2ed}
 
 #draftModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f2ed;z-index:10000;overflow-y:auto}
 .draft-inner{max-width:1400px;margin:0 auto;padding:28px;position:relative;color:#1a1714}
@@ -208,6 +208,7 @@ svg.map-svg{width:100%;height:100%}
     <div class="map-title">LIZARD KINGS &mdash; WORLD TOUR</div>
     <div style="display:flex;align-items:center;gap:16px">
       <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Seasons:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
+      <button onclick="openInsuranceModal()" style="padding:6px 16px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer" title="Buy or review insurance coverage">INSURANCE</button>
       <button class="map-close" id="mapClose">CLOSE</button>
     </div>
   </div>
@@ -837,10 +838,10 @@ function loadGame(){
 function resetGame(){
   if(!confirm('Reset the game?'))return;
   gameState={round:1,maxRounds:parseInt(document.getElementById('totalRounds').value)||8,insurancePurchased:false,escapedAnimals:[],
-    teams:{1:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}},
-           2:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}},
-           3:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}},
-           4:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0}}}};
+    teams:{1:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
+           2:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
+           3:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
+           4:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}}}};
   draftPickNumber=0;document.getElementById('logEntries').innerHTML='';
   for(let i=1;i<=4;i++)document.getElementById(`dest${i}`).value='';
   document.querySelectorAll('.team-badge-container').forEach(c=>c.innerHTML='');document.querySelectorAll('.animal-card').forEach(c=>delete c.dataset.team);
@@ -1029,11 +1030,16 @@ function allAnimalsDrafted(){
 
 function openInsurancePhase(){
   if(gameState.insurancePurchased){
-    // already done — just open map
     document.getElementById('mapModal').classList.add('show');
     initMap();populateDestinationDropdowns();updateTeamDisplay();
     return;
   }
+  renderInsurancePanels();
+  document.getElementById('insuranceModal').style.display='block';
+}
+
+function openInsuranceModal(){
+  // Always openable from the map — re-renders current state
   renderInsurancePanels();
   document.getElementById('insuranceModal').style.display='block';
 }
@@ -1080,19 +1086,24 @@ function setInsurance(teamNum, cat, level){
 }
 
 function confirmInsurance(){
-  // Deduct costs
+  // Deduct costs for any newly selected coverage
   [1,2,3,4].forEach(tn=>{
     const ins = gameState.teams[tn].insurance || {};
+    const prev = gameState.teams[tn].insurancePaid || {land:0,air:0,sea:0,ice:0};
     ['land','air','sea','ice'].forEach(cat=>{
-      const cost = insuranceCostFor(cat, ins[cat]||0);
-      gameState.teams[tn].cash -= cost;
+      const newLevel = ins[cat]||0;
+      const oldLevel = prev[cat]||0;
+      // Only charge the difference if upgrading
+      const newCost = insuranceCostFor(cat, newLevel);
+      const oldCost = insuranceCostFor(cat, oldLevel);
+      const delta = newCost - oldCost;
+      if(delta > 0) gameState.teams[tn].cash -= delta;
     });
+    gameState.teams[tn].insurancePaid = {...ins};
   });
   gameState.insurancePurchased = true;
   document.getElementById('insuranceModal').style.display='none';
-  // Open map
-  document.getElementById('mapModal').classList.add('show');
-  initMap();populateDestinationDropdowns();updateTeamDisplay();
+  updateTeamDisplay();
 }
 
 // ── ESCAPE SYSTEM ──────────────────────────────────────────────────────
@@ -1225,12 +1236,8 @@ function showEscapeAnimation(category, done){
 // =============================================
 document.getElementById('mapBtn').addEventListener('click',()=>{
   gameState.maxRounds=parseInt(document.getElementById('totalRounds').value)||8;
-  if(allAnimalsDrafted()&&!gameState.insurancePurchased){
-    openInsurancePhase();
-  } else {
-    document.getElementById('mapModal').classList.add('show');
-    initMap();populateDestinationDropdowns();updateTeamDisplay();
-  }
+  document.getElementById('mapModal').classList.add('show');
+  initMap();populateDestinationDropdowns();updateTeamDisplay();
 });
 document.getElementById('mapClose').addEventListener('click',()=>document.getElementById('mapModal').classList.remove('show'));
 document.getElementById('nextRound').addEventListener('click',nextRound);
@@ -1244,6 +1251,3 @@ initGallery();
 updateCount();
 updateCompetitiveAnalysis();
 </script>
-
-</body>
-</html>
