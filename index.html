@@ -199,7 +199,10 @@ svg.map-svg{width:100%;height:100%}
     <tbody id="analysisTableBody"></tbody></table>
   </div>
 </div>
-<div class="results-count" id="resultsCount">24 Animals</div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px">
+  <div class="results-count" id="resultsCount">24 Animals</div>
+  <button onclick="randomlyAssignAnimals()" style="padding:5px 14px;background:#1a1714;color:#d4a843;border:1px solid #d4a843;font-family:'Bebas Neue',sans-serif;font-size:0.82rem;letter-spacing:0.15em;cursor:pointer" title="Randomly assign all 24 animals, 6 per team">&#9684; RANDOM ASSIGN</button>
+</div>
 <div class="gallery" id="gallery"></div>
 </div>
 
@@ -449,16 +452,16 @@ const cityNames={newyork:'NYC',london:'LDN',paris:'PAR',dubai:'DXB',capetown:'CP
 const cityFullNames={newyork:'New York',london:'London',paris:'Paris',dubai:'Dubai',capetown:'Cape Town',mexicocity:'Mexico City',saopaulo:'Sao Paulo',tokyo:'Tokyo',shanghai:'Shanghai',moscow:'Moscow',mystery:'Mystery Island'};
 const cityData={
   start:      {name:'START',       pop:0,       x:400,y:550,connections:['saopaulo','capetown']},
-  saopaulo:   {name:'SAO PAULO',   pop:800000,  x:300,y:480,connections:['mexicocity','start','capetown']},
-  mexicocity: {name:'MEXICO CITY', pop:800000,  x:180,y:350,connections:['newyork','saopaulo']},
+  saopaulo:   {name:'SAO PAULO',   pop:1000000,  x:300,y:480,connections:['mexicocity','start','capetown']},
+  mexicocity: {name:'MEXICO CITY', pop:1000000,  x:180,y:350,connections:['newyork','saopaulo']},
   newyork:    {name:'NEW YORK',    pop:1500000, x:250,y:200,connections:['london','paris','mexicocity','mystery']},
   london:     {name:'LONDON',      pop:1500000, x:480,y:140,connections:['newyork','paris','mystery']},
-  paris:      {name:'PARIS',       pop:1500000, x:520,y:220,connections:['dubai','capetown','newyork','london']},
-  capetown:   {name:'CAPE TOWN',   pop:800000,  x:580,y:450,connections:['start','dubai','shanghai','paris','saopaulo']},
-  moscow:     {name:'MOSCOW',      pop:3000000, x:650,y:100,connections:['shanghai','dubai','mystery']},
-  dubai:      {name:'DUBAI',       pop:800000,  x:700,y:280,connections:['paris','capetown','moscow','shanghai']},
-  mystery:    {name:'MYSTERY ISLAND',pop:2000000, x:400,y:40, connections:['newyork','london','moscow']},
-  tokyo:      {name:'TOKYO',       pop:1500000, x:920,y:180,connections:['shanghai']},
+  paris:      {name:'PARIS',       pop:1500000, x:520,y:220,connections:['dubai','capetown','newyork','london','moscow']},
+  capetown:   {name:'CAPE TOWN',   pop:1000000,  x:580,y:450,connections:['start','dubai','shanghai','paris','saopaulo']},
+  moscow:     {name:'MOSCOW',      pop:3000000, x:650,y:100,connections:['shanghai','dubai','mystery','paris','tokyo']},
+  dubai:      {name:'DUBAI',       pop:1000000,  x:700,y:280,connections:['paris','capetown','moscow','shanghai']},
+  mystery:    {name:'MYSTERY ISLAND',pop:2000000, x:400,y:65, connections:['newyork','london','moscow']},
+  tokyo:      {name:'TOKYO',       pop:1500000, x:920,y:180,connections:['shanghai','moscow']},
   shanghai:   {name:'SHANGHAI',    pop:2000000, x:820,y:260,connections:['tokyo','capetown','moscow','dubai']}
 };
 
@@ -609,6 +612,24 @@ function openQuickAssign(idx,btn){
   m.addEventListener('click',e=>{if(e.target===m)document.body.removeChild(m);});
 }
 
+function randomlyAssignAnimals(){
+  if(!confirm('Randomly assign all 24 animals (6 per team)? This will clear current assignments.')) return;
+  // Clear all assignments
+  [1,2,3,4].forEach(tn=>{gameState.teams[tn].artworks=[];});
+  document.querySelectorAll('.animal-card').forEach(c=>{
+    delete c.dataset.team;
+    const cont=c.querySelector('.team-badge-container');
+    if(cont) cont.innerHTML='';
+  });
+  // Shuffle all 24 indices
+  const indices=animals.map((_,i)=>i);
+  for(let i=indices.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[indices[i],indices[j]]=[indices[j],indices[i]];}
+  // Assign 6 to each team in order
+  [1,2,3,4].forEach((tn,ti)=>{
+    indices.slice(ti*6,(ti+1)*6).forEach(idx=>assignAnimalToTeam(idx,tn,null));
+  });
+  updateTeamDisplay();updateCompetitiveAnalysis();updateAllRiskBadges();
+}
 function assignAnimalToTeam(idx,teamNum,btn){
   [1,2,3,4].forEach(tn=>gameState.teams[tn].artworks=gameState.teams[tn].artworks.filter(a=>a.idx!==idx));
   gameState.teams[teamNum].artworks.push({idx,title:animals[idx].title,revenue:0,ticketsSold:0});
@@ -710,8 +731,8 @@ function drawCities(){
     }else if(k==='mystery'){
       const r=Math.sqrt(city.pop/10000)*3;
       const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',city.x);c.setAttribute('cy',city.y);c.setAttribute('r',r);c.setAttribute('fill','#7040a0');c.setAttribute('opacity','0.7');c.setAttribute('class','city-circle');c.setAttribute('data-city',k);g.appendChild(c);
-      const l=document.createElementNS('http://www.w3.org/2000/svg','text');l.setAttribute('x',city.x);l.setAttribute('y',city.y-r-6);l.setAttribute('class','city-label');l.setAttribute('fill','#9060c0');l.textContent='?';g.appendChild(l);
-      const pl=document.createElementNS('http://www.w3.org/2000/svg','text');pl.setAttribute('x',city.x);pl.setAttribute('y',city.y+4);pl.setAttribute('class','city-pop-label');pl.setAttribute('fill','#c090e0');pl.textContent='?';g.appendChild(pl);
+      const l=document.createElementNS('http://www.w3.org/2000/svg','text');l.setAttribute('x',city.x);l.setAttribute('y',city.y-r-10);l.setAttribute('class','city-label');l.setAttribute('fill','#9060c0');l.textContent='MYSTERY ISLAND';g.appendChild(l);
+      const pl=document.createElementNS('http://www.w3.org/2000/svg','text');pl.setAttribute('x',city.x);pl.setAttribute('y',city.y+5);pl.setAttribute('class','city-pop-label');pl.setAttribute('fill','#fff');pl.setAttribute('font-size','16');pl.setAttribute('font-weight','900');pl.textContent='?';g.appendChild(pl);
     }else{
       const r=Math.sqrt(city.pop/10000)*3;
       const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',city.x);c.setAttribute('cy',city.y);c.setAttribute('r',r);c.setAttribute('fill','#d4a843');c.setAttribute('opacity','0.55');c.setAttribute('class','city-circle');c.setAttribute('data-city',k);g.appendChild(c);
