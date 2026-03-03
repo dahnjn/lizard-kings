@@ -445,7 +445,7 @@ const animals = [
 const bonusCards = []; // kept for save/load compatibility
 
 const cities=['newyork','london','paris','dubai','capetown','mexicocity','saopaulo','tokyo','shanghai','moscow','mystery'];
-const cityNames={newyork:'NYC',london:'LDN',paris:'PAR',dubai:'DXB',capetown:'CPT',mexicocity:'MEX',saopaulo:'SAO',tokyo:'TYO',shanghai:'SHA',moscow:'MOS'};
+const cityNames={newyork:'NYC',london:'LDN',paris:'PAR',dubai:'DXB',capetown:'CPT',mexicocity:'MEX',saopaulo:'SAO',tokyo:'TYO',shanghai:'SHA',moscow:'MOS',mystery:'???'};
 const cityFullNames={newyork:'New York',london:'London',paris:'Paris',dubai:'Dubai',capetown:'Cape Town',mexicocity:'Mexico City',saopaulo:'Sao Paulo',tokyo:'Tokyo',shanghai:'Shanghai',moscow:'Moscow',mystery:'Mystery Island'};
 const cityData={
   start:      {name:'START',       pop:0,       x:400,y:550,connections:['saopaulo','capetown']},
@@ -545,7 +545,7 @@ function initGallery(){
   const g=document.getElementById('gallery');
   g.innerHTML=animals.map((a,idx)=>{
     const chips=Object.entries(a.cities).map(([c,p])=>
-      `<div class="ticket-chip city-${c}"><span class="ticket-city">${cityNames[c]}</span><span class="ticket-price">$${p}</span></div>`
+      `<div class="ticket-chip city-${c}"><span class="ticket-city">${cityNames[c]||c}</span><span class="ticket-price">${c==='mystery'?'?':('$'+p)}</span></div>`
     ).join('');
     const total=Object.values(a.cities).reduce((s,v)=>s+v,0);
     return`<div class="animal-card ${a.category}" data-category="${a.category}" data-idx="${idx}">
@@ -711,7 +711,7 @@ function drawCities(){
       const r=Math.sqrt(city.pop/10000)*3;
       const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',city.x);c.setAttribute('cy',city.y);c.setAttribute('r',r);c.setAttribute('fill','#7040a0');c.setAttribute('opacity','0.7');c.setAttribute('class','city-circle');c.setAttribute('data-city',k);g.appendChild(c);
       const l=document.createElementNS('http://www.w3.org/2000/svg','text');l.setAttribute('x',city.x);l.setAttribute('y',city.y-r-6);l.setAttribute('class','city-label');l.setAttribute('fill','#9060c0');l.textContent='?';g.appendChild(l);
-      const pl=document.createElementNS('http://www.w3.org/2000/svg','text');pl.setAttribute('x',city.x);pl.setAttribute('y',city.y+4);pl.setAttribute('class','city-pop-label');pl.setAttribute('fill','#c090e0');pl.textContent='2.0M';g.appendChild(pl);
+      const pl=document.createElementNS('http://www.w3.org/2000/svg','text');pl.setAttribute('x',city.x);pl.setAttribute('y',city.y+4);pl.setAttribute('class','city-pop-label');pl.setAttribute('fill','#c090e0');pl.textContent='?';g.appendChild(pl);
     }else{
       const r=Math.sqrt(city.pop/10000)*3;
       const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',city.x);c.setAttribute('cy',city.y);c.setAttribute('r',r);c.setAttribute('fill','#d4a843');c.setAttribute('opacity','0.55');c.setAttribute('class','city-circle');c.setAttribute('data-city',k);g.appendChild(c);
@@ -1024,7 +1024,7 @@ function selectItemForDraft(){
     currentDraftAnimalIdx=idx;currentDraftIsBonus=false;currentDraftBonusId=null;
     const a=animals[idx],total=Object.values(a.cities).reduce((s,v)=>s+v,0);
     const starBadge=a.star?`<span style="color:#d4a843;font-size:1.2rem;margin-left:6px">&#9733;</span>`:'';
-    const chips=Object.entries(a.cities).map(([c,p])=>`<div style="background:#fafaf8;padding:4px 2px;text-align:center;border:1px solid #e0dbd2"><div style="font-weight:700;font-size:0.58rem;color:#7a7060;text-transform:uppercase">${cityNames[c]}</div><div style="color:#c49a28;font-weight:600;font-size:0.78rem">$${p}</div></div>`).join('');
+    const chips=Object.entries(a.cities).map(([c,p])=>`<div style="background:#fafaf8;padding:4px 2px;text-align:center;border:1px solid #e0dbd2"><div style="font-weight:700;font-size:0.58rem;color:#7a7060;text-transform:uppercase">${cityNames[c]||c}</div><div style="color:#c49a28;font-weight:600;font-size:0.78rem">${c==='mystery'?'?':('$'+p)}</div></div>`).join('');
     const imgHtml = a.img ? `<div style="background:#edeae4;height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;border-radius:2px"><img src="${a.img}" style="max-width:70%;max-height:140px;object-fit:contain" onerror="this.parentElement.style.display='none'"></div>` : '';
     document.getElementById('draftAnimalCard').innerHTML=`
       ${imgHtml}
