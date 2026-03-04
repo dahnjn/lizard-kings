@@ -213,6 +213,7 @@ svg.map-svg{width:100%;height:100%}
     <div style="display:flex;align-items:center;gap:16px">
       <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Years:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
       <button onclick="openInsuranceModal()" style="padding:6px 16px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer" title="Buy or review insurance coverage">INSURANCE</button>
+      <div style="display:flex;align-items:center;gap:6px;padding:4px 12px;border:1px solid #d0c8bc;background:#fafaf8"><span style="color:#7a7060;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em">Years Left</span><span id="roundsRemaining" style="color:#c49a28;font-size:1.1rem;font-weight:bold;font-family:'Bebas Neue',sans-serif;letter-spacing:0.08em">8</span></div>
       <div style="width:1px;height:24px;background:#d0c8bc"></div>
       <button id="nextRound" style="padding:6px 16px;background:#1e8a4a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">NEXT YEAR</button>
       <button id="resetGame" style="padding:6px 16px;background:#7a1a1a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">RESET GAME</button>
@@ -230,7 +231,6 @@ svg.map-svg{width:100%;height:100%}
       </div>
     </div>
     <div class="sidebar">
-      <div class="round-info"><label>Years Remaining</label><span id="roundsRemaining">8</span></div>
       <div style="background:#fafaf8;padding:10px;margin-bottom:10px;border:1px solid #e0dbd2">
         <h3>Scoreboard</h3><div id="scoreboard"></div>
       </div>
