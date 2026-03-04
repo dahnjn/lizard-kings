@@ -213,6 +213,11 @@ svg.map-svg{width:100%;height:100%}
     <div style="display:flex;align-items:center;gap:16px">
       <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Years:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
       <button onclick="openInsuranceModal()" style="padding:6px 16px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer" title="Buy or review insurance coverage">INSURANCE</button>
+      <div style="width:1px;height:24px;background:#d0c8bc"></div>
+      <button id="nextRound" style="padding:6px 16px;background:#1e8a4a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">NEXT YEAR</button>
+      <button id="resetGame" style="padding:6px 16px;background:#7a1a1a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">RESET GAME</button>
+      <button id="saveGame" style="padding:6px 16px;background:#1a3a6a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">SAVE GAME</button>
+      <button id="loadGame" style="padding:6px 16px;background:#4a3a0a;color:#fff;border:none;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer">LOAD GAME</button>
       <button class="map-close" id="mapClose">CLOSE</button>
     </div>
   </div>
@@ -228,12 +233,6 @@ svg.map-svg{width:100%;height:100%}
       <div class="round-info"><label>Years Remaining</label><span id="roundsRemaining">8</span></div>
       <div style="background:#fafaf8;padding:10px;margin-bottom:10px;border:1px solid #e0dbd2">
         <h3>Scoreboard</h3><div id="scoreboard"></div>
-      </div>
-      <div class="game-controls">
-        <button id="nextRound">NEXT YEAR</button>
-        <button id="resetGame">RESET GAME</button>
-        <button id="saveGame">SAVE GAME</button>
-        <button id="loadGame">LOAD GAME</button>
       </div>
       <h3>Destinations</h3>
       <div class="team-panel team-1"><h4>Red</h4><select id="dest1"></select>
