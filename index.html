@@ -211,7 +211,7 @@ svg.map-svg{width:100%;height:100%}
   <div class="map-header">
     <div class="map-title">LIZARD KINGS &mdash; WORLD TOUR</div>
     <div style="display:flex;align-items:center;gap:16px">
-      <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Years:<input type="number" id="totalRounds" class="rounds-input" value="8" min="1" max="20"></label>
+      <label style="color:#3a3830;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em">Years:<input type="number" id="totalRounds" class="rounds-input" value="3" min="1" max="10"></label>
       <button onclick="openInsuranceModal()" style="padding:6px 16px;background:transparent;color:#c49a28;border:1px solid #c49a28;font-family:'Bebas Neue',sans-serif;font-size:0.88rem;letter-spacing:0.15em;cursor:pointer" title="Buy or review insurance coverage">INSURANCE</button>
       <div style="display:flex;align-items:center;gap:6px;padding:4px 12px;border:1px solid #d0c8bc;background:#fafaf8"><span style="color:#7a7060;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em">Years Left</span><span id="roundsRemaining" style="color:#c49a28;font-size:1.1rem;font-weight:bold;font-family:'Bebas Neue',sans-serif;letter-spacing:0.08em">8</span></div>
       <div style="width:1px;height:24px;background:#d0c8bc"></div>
@@ -235,25 +235,49 @@ svg.map-svg{width:100%;height:100%}
         <h3>Scoreboard</h3><div id="scoreboard"></div>
       </div>
       <h3>Destinations</h3>
-      <div class="team-panel team-1"><h4>Red</h4><select id="dest1"></select>
+      <div class="team-panel team-1"><h4>Red</h4>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">Stop 1</div>
+        <select id="dest1a"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 2</div>
+        <select id="dest1b"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 3</div>
+        <select id="dest1c"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv1">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash1">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount1">0</span></div>
         <div style="display:none"><span id="score1"></span></div>
       </div>
-      <div class="team-panel team-2"><h4>Yellow</h4><select id="dest2"></select>
+      <div class="team-panel team-2"><h4>Yellow</h4>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">Stop 1</div>
+        <select id="dest2a"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 2</div>
+        <select id="dest2b"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 3</div>
+        <select id="dest2c"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv2">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash2">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount2">0</span></div>
         <div style="display:none"><span id="score2"></span></div>
       </div>
-      <div class="team-panel team-3"><h4>Blue</h4><select id="dest3"></select>
+      <div class="team-panel team-3"><h4>Blue</h4>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">Stop 1</div>
+        <select id="dest3a"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 2</div>
+        <select id="dest3b"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 3</div>
+        <select id="dest3c"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv3">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash3">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount3">0</span></div>
         <div style="display:none"><span id="score3"></span></div>
       </div>
-      <div class="team-panel team-4"><h4>Green</h4><select id="dest4"></select>
+      <div class="team-panel team-4"><h4>Green</h4>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">Stop 1</div>
+        <select id="dest4a"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 2</div>
+        <select id="dest4b"></select>
+        <div style="font-size:0.58rem;color:#b0a898;text-transform:uppercase;letter-spacing:0.08em;margin:4px 0 3px">Stop 3</div>
+        <select id="dest4c"></select>
         <div class="team-stat"><span>Ticket Value</span><span id="tv4">$0</span></div>
         <div class="team-stat"><span>Cash</span><span id="cash4">$0</span></div>
         <div class="team-stat"><span>Animals</span><span id="artcount4">0</span></div>
@@ -365,82 +389,82 @@ const animals = [
   // LAND
   {title:"Tyrannosaurus Rex", latin:"Tyrannosaurus rex",             period:"Late Cretaceous · 68–66 Ma",    category:"land",escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Tyrannosaurus_Rex.png",
-   cities:{newyork:18,london:15,paris:14,dubai:12,capetown:10,mexicocity:13,saopaulo:11,tokyo:16,shanghai:14,moscow:8,mystery:13}},
+   cities:{newyork:10,london:10,paris:10,dubai:9,capetown:8,mexicocity:9,saopaulo:8,tokyo:10,shanghai:10,moscow:7,mystery:9}},
   {title:"Spinosaurus",       latin:"Spinosaurus aegyptiacus",       period:"Cretaceous · 99–93 Ma",         category:"land",escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Spinosaurus.png",
-   cities:{newyork:14,london:12,paris:11,dubai:10,capetown:9,mexicocity:11,saopaulo:9,tokyo:12,shanghai:13,moscow:6,mystery:11}},
+   cities:{newyork:9,london:7,paris:7,dubai:6,capetown:5,mexicocity:7,saopaulo:6,tokyo:7,shanghai:8,moscow:4,mystery:7}},
   {title:"Triceratops",       latin:"Triceratops horridus",          period:"Late Cretaceous · 68–66 Ma",    category:"land",escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Triceratops.png",
-   cities:{newyork:13,london:11,paris:10,dubai:8,capetown:8,mexicocity:12,saopaulo:10,tokyo:9,shanghai:9,moscow:5,mystery:10}},
+   cities:{newyork:7,london:6,paris:6,dubai:4,capetown:4,mexicocity:7,saopaulo:6,tokyo:5,shanghai:5,moscow:3,mystery:6}},
   {title:"Stegosaurus",       latin:"Stegosaurus armatus",           period:"Late Jurassic · 155–150 Ma",    category:"land", star:true,escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Stegosaurus.png",
-   cities:{newyork:11,london:10,paris:10,dubai:8,capetown:7,mexicocity:9,saopaulo:8,tokyo:9,shanghai:8,moscow:5,mystery:8}},
+   cities:{newyork:5,london:5,paris:5,dubai:4,capetown:4,mexicocity:4,saopaulo:4,tokyo:4,shanghai:4,moscow:3,mystery:4}},
   {title:"Barbary Lion",      latin:"Panthera leo leo",              period:"Extinct · 1922 CE",             category:"land",escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Barbary_Lion.png",
-   cities:{newyork:12,london:14,paris:13,dubai:15,capetown:12,mexicocity:10,saopaulo:9,tokyo:8,shanghai:9,moscow:7,mystery:11}},
+   cities:{newyork:7,london:9,paris:8,dubai:9,capetown:8,mexicocity:6,saopaulo:6,tokyo:5,shanghai:6,moscow:4,mystery:7}},
   {title:"Cave Lion",         latin:"Panthera spelaea",              period:"Pleistocene · 370k–13k yrs",    category:"land",escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Cave_Lion.png",
-   cities:{newyork:10,london:13,paris:12,dubai:10,capetown:8,mexicocity:9,saopaulo:8,tokyo:9,shanghai:9,moscow:13,mystery:10}},
+   cities:{newyork:6,london:7,paris:7,dubai:6,capetown:5,mexicocity:5,saopaulo:5,tokyo:5,shanghai:5,moscow:8,mystery:6}},
 
   // AIR
   {title:"Quetzalcoatlus",    latin:"Quetzalcoatlus northropi",      period:"Late Cretaceous · 68–66 Ma",    category:"air",escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Quetzalcoatlus.png",
-   cities:{newyork:12,london:10,paris:11,dubai:13,capetown:9,mexicocity:15,saopaulo:12,tokyo:8,shanghai:9,moscow:5,mystery:10}},
+   cities:{newyork:7,london:6,paris:7,dubai:8,capetown:5,mexicocity:9,saopaulo:7,tokyo:5,shanghai:5,moscow:3,mystery:6}},
   {title:"Pteranodon",        latin:"Pteranodon longiceps",          period:"Late Cretaceous · 86–84 Ma",    category:"air", star:true,escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Pteranodon.png",
-   cities:{newyork:11,london:9,paris:10,dubai:10,capetown:8,mexicocity:10,saopaulo:9,tokyo:10,shanghai:9,moscow:5,mystery:9}},
+   cities:{newyork:6,london:5,paris:6,dubai:5,capetown:4,mexicocity:5,saopaulo:5,tokyo:5,shanghai:5,moscow:3,mystery:5}},
   {title:"Argentavis",        latin:"Argentavis magnificens",        period:"Late Miocene · 6 Ma",           category:"air",escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Argentavis.png",
-   cities:{newyork:8,london:7,paris:8,dubai:7,capetown:7,mexicocity:9,saopaulo:14,tokyo:6,shanghai:7,moscow:4,mystery:8}},
+   cities:{newyork:3,london:3,paris:4,dubai:3,capetown:3,mexicocity:4,saopaulo:6,tokyo:3,shanghai:3,moscow:2,mystery:4}},
   {title:"Terror Bird",       latin:"Phorusrhacidae",                period:"Eocene–Pleistocene · 62–2 Ma",  category:"air",escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Terror_Bird.png",
-   cities:{newyork:9,london:8,paris:9,dubai:8,capetown:10,mexicocity:11,saopaulo:13,tokyo:7,shanghai:7,moscow:4,mystery:9}},
+   cities:{newyork:4,london:4,paris:5,dubai:4,capetown:5,mexicocity:6,saopaulo:7,tokyo:3,shanghai:3,moscow:2,mystery:5}},
   {title:"Microraptor",       latin:"Microraptor gui",               period:"Early Cretaceous · 125–120 Ma", category:"air",escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Microraptor.png",
-   cities:{newyork:8,london:7,paris:8,dubai:8,capetown:6,mexicocity:7,saopaulo:6,tokyo:12,shanghai:14,moscow:3,mystery:8}},
-  {title:"Dimorphodon",       latin:"Dimorphodon macronyx",          period:"Early Jurassic · 196–183 Ma",   category:"air",escapeRisk:1,
+   cities:{newyork:4,london:3,paris:4,dubai:4,capetown:3,mexicocity:3,saopaulo:3,tokyo:5,shanghai:6,moscow:1,mystery:4}},
+  {title:"Dimorphodon",       latin:"Dimorphodon macronyx",          period:"Early Jurassic · 196–183 Ma",   category:"air", star:true,escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Dimorphodon.png",
-   cities:{newyork:7,london:9,paris:8,dubai:6,capetown:6,mexicocity:7,saopaulo:6,tokyo:7,shanghai:6,moscow:4,mystery:7}},
+   cities:{newyork:3,london:3,paris:3,dubai:2,capetown:2,mexicocity:3,saopaulo:2,tokyo:2,shanghai:2,moscow:1,mystery:2}},
 
   // SEA
   {title:"Megalodon",         latin:"Otodus megalodon",              period:"Miocene–Pliocene · 23–3.6 Ma",  category:"sea", star:true,escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Megalodon.png",
-   cities:{newyork:16,london:13,paris:12,dubai:11,capetown:12,mexicocity:10,saopaulo:9,tokyo:14,shanghai:12,moscow:5,mystery:11}},
+   cities:{newyork:10,london:8,paris:8,dubai:7,capetown:8,mexicocity:6,saopaulo:6,tokyo:9,shanghai:8,moscow:3,mystery:7}},
   {title:"Mosasaurus",        latin:"Mosasaurus hoffmannii",         period:"Late Cretaceous · 82–66 Ma",    category:"sea",escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Mosasaurus.png",
-   cities:{newyork:12,london:11,paris:10,dubai:9,capetown:10,mexicocity:9,saopaulo:8,tokyo:11,shanghai:10,moscow:5,mystery:10}},
+   cities:{newyork:7,london:6,paris:5,dubai:5,capetown:6,mexicocity:5,saopaulo:4,tokyo:6,shanghai:6,moscow:3,mystery:6}},
   {title:"Dunkleosteus",      latin:"Dunkleosteus terrelli",         period:"Late Devonian · 382–358 Ma",    category:"sea",escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Dunkleosteus.png",
-   cities:{newyork:10,london:12,paris:11,dubai:8,capetown:7,mexicocity:8,saopaulo:7,tokyo:9,shanghai:9,moscow:6,mystery:9}},
+   cities:{newyork:5,london:6,paris:6,dubai:4,capetown:3,mexicocity:4,saopaulo:3,tokyo:5,shanghai:5,moscow:3,mystery:5}},
   {title:"Plesiosaur",        latin:"Elasmosaurus platyurus",        period:"Late Cretaceous · 80 Ma",       category:"sea", star:true,escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Plesiosaur.png",
-   cities:{newyork:11,london:14,paris:12,dubai:9,capetown:8,mexicocity:8,saopaulo:7,tokyo:10,shanghai:9,moscow:7,mystery:10}},
+   cities:{newyork:6,london:8,paris:7,dubai:5,capetown:4,mexicocity:4,saopaulo:4,tokyo:6,shanghai:5,moscow:4,mystery:6}},
   {title:"Helicoprion",       latin:"Helicoprion bessonowi",         period:"Permian · 290–250 Ma",          category:"sea",escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Helicoprion.png",
-   cities:{newyork:8,london:9,paris:9,dubai:7,capetown:6,mexicocity:7,saopaulo:6,tokyo:8,shanghai:9,moscow:5,mystery:7}},
+   cities:{newyork:3,london:4,paris:4,dubai:3,capetown:2,mexicocity:3,saopaulo:2,tokyo:3,shanghai:4,moscow:2,mystery:3}},
   {title:"Liopleurodon",      latin:"Liopleurodon ferox",            period:"Middle Jurassic · 165–155 Ma",  category:"sea",escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Liopleurodon-dino-large.png",
-   cities:{newyork:9,london:11,paris:10,dubai:8,capetown:7,mexicocity:7,saopaulo:6,tokyo:8,shanghai:8,moscow:6,mystery:8}},
+   cities:{newyork:4,london:5,paris:4,dubai:4,capetown:3,mexicocity:3,saopaulo:3,tokyo:4,shanghai:4,moscow:3,mystery:4}},
 
   // ICE
   {title:"Saber-Tooth Cat",   latin:"Smilodon fatalis",              period:"Pleistocene · 2.5 Ma–10k yrs",  category:"ice", star:true,escapeRisk:4,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Sabertooth_Cat.png",
-   cities:{newyork:14,london:12,paris:11,dubai:9,capetown:9,mexicocity:11,saopaulo:9,tokyo:11,shanghai:10,moscow:7,mystery:10}},
+   cities:{newyork:8,london:7,paris:7,dubai:5,capetown:5,mexicocity:7,saopaulo:5,tokyo:7,shanghai:6,moscow:4,mystery:6}},
   {title:"Cave Bear",         latin:"Ursus spelaeus",                period:"Pleistocene · 1.2 Ma–24k yrs",  category:"ice",escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Cave_Bear.png",
-   cities:{newyork:8,london:10,paris:11,dubai:6,capetown:6,mexicocity:7,saopaulo:6,tokyo:8,shanghai:8,moscow:14,mystery:8}},
+   cities:{newyork:4,london:5,paris:5,dubai:3,capetown:3,mexicocity:3,saopaulo:3,tokyo:4,shanghai:4,moscow:7,mystery:4}},
   {title:"Irish Elk",         latin:"Megaloceros giganteus",         period:"Pleistocene · 400k–7.7k yrs",   category:"ice",escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Irish_Elk.png",
-   cities:{newyork:7,london:13,paris:12,dubai:6,capetown:5,mexicocity:6,saopaulo:5,tokyo:7,shanghai:7,moscow:11,mystery:8}},
-  {title:"Giant Ground Sloth",latin:"Megatherium americanum",        period:"Pliocene–Pleistocene · 5.3 Ma", category:"ice",escapeRisk:1,
+   cities:{newyork:3,london:6,paris:6,dubai:3,capetown:2,mexicocity:3,saopaulo:2,tokyo:3,shanghai:3,moscow:5,mystery:4}},
+  {title:"Giant Ground Sloth",latin:"Megatherium americanum",        period:"Pliocene–Pleistocene · 5.3 Ma", category:"ice", star:true,escapeRisk:1,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Giant_Sloth.png",
-   cities:{newyork:7,london:8,paris:9,dubai:7,capetown:8,mexicocity:12,saopaulo:14,tokyo:6,shanghai:7,moscow:5,mystery:8}},
+   cities:{newyork:3,london:4,paris:4,dubai:3,capetown:4,mexicocity:6,saopaulo:7,tokyo:3,shanghai:3,moscow:3,mystery:4}},
   {title:"Woolly Mammoth",    latin:"Mammuthus primigenius",         period:"Pleistocene · 400k–4k yrs",     category:"ice",escapeRisk:3,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Woolly_Mammoth.png",
-   cities:{newyork:11,london:13,paris:12,dubai:7,capetown:6,mexicocity:9,saopaulo:7,tokyo:10,shanghai:10,moscow:15,mystery:10}},
+   cities:{newyork:6,london:8,paris:7,dubai:4,capetown:3,mexicocity:5,saopaulo:4,tokyo:6,shanghai:6,moscow:9,mystery:6}},
   {title:"Short-Face Bear",   latin:"Arctodus simus",                period:"Pleistocene · 1.8 Ma–11k yrs",  category:"ice", star:true,escapeRisk:2,
    img:"https://raw.githubusercontent.com/dahnjn/lizard-kings/main/Short-Face_Bear.png",
-   cities:{newyork:8,london:8,paris:8,dubai:6,capetown:6,mexicocity:8,saopaulo:7,tokyo:7,shanghai:7,moscow:12,mystery:8}}
+   cities:{newyork:3,london:3,paris:4,dubai:3,capetown:3,mexicocity:4,saopaulo:3,tokyo:3,shanghai:3,moscow:5,mystery:4}}
 ];
 
 // Bonus cards removed — replaced by insurance system
@@ -750,11 +774,41 @@ function drawTeams(){
     g.appendChild(mk);
   }
 }
+function getStopOptions(fromCity){
+  if(!fromCity) return [];
+  const city=cityData[fromCity];
+  if(!city) return [];
+  return city.connections.filter(c=>c!=='start');
+}
+function buildStopOpts(cities){
+  return '<option value="">Stay</option>'+cities.map(k=>`<option value="${k}">${cityData[k].name}</option>`).join('');
+}
 function populateDestinationDropdowns(){
   for(let i=1;i<=4;i++){
-    const s=document.getElementById(`dest${i}`);const avail=cityData[gameState.teams[i].city].connections;
-    s.innerHTML='<option value="">Stay Here</option>'+avail.filter(c=>c!=='start').map(k=>`<option value="${k}">${cityData[k].name}</option>`).join('');
+    // Stop A: connections from current city
+    const sa=document.getElementById(`dest${i}a`);
+    const availA=getStopOptions(gameState.teams[i].city);
+    sa.innerHTML=buildStopOpts(availA);
+    // Stop B: connections from wherever Stop A lands (or Stay = current city)
+    updateStopB(i);
   }
+}
+function updateStopB(i){
+  const sa=document.getElementById(`dest${i}a`);
+  const sb=document.getElementById(`dest${i}b`);
+  const fromA=sa.value||gameState.teams[i].city;
+  const availB=getStopOptions(fromA);
+  sb.innerHTML=buildStopOpts(availB);
+  updateStopC(i);
+}
+function updateStopC(i){
+  const sa=document.getElementById(`dest${i}a`);
+  const sb=document.getElementById(`dest${i}b`);
+  const sc=document.getElementById(`dest${i}c`);
+  const fromA=sa.value||gameState.teams[i].city;
+  const fromB=sb.value||fromA;
+  const availC=getStopOptions(fromB);
+  sc.innerHTML=buildStopOpts(availC);
 }
 
 // =============================================
@@ -770,7 +824,7 @@ function computeScores(){
 function updateTeamDisplay(){
   const tv=getTeamTicketValues();
   for(let i=1;i<=4;i++){
-    const dest=document.getElementById(`dest${i}`).value||gameState.teams[i].city;
+    const dest=document.getElementById(`dest${i}a`)?document.getElementById(`dest${i}a`).value||gameState.teams[i].city:gameState.teams[i].city;
     document.getElementById(`tv${i}`).textContent='$'+(dest!=='start'?(tv[i][dest]||0):0);
     const cash=gameState.teams[i].cash,cel=document.getElementById(`cash${i}`);
     cel.textContent='$'+cash.toLocaleString();cel.style.color=cash<0?'#c0392b':'#1a1714';
@@ -804,20 +858,49 @@ function getTeamStarCount(teamNum){
 }
 
 function calculateRevenue(escapedAnimalIdx){
-  const tv=getTeamTicketValues(),dest={},results=[];
+  // Build dest from all stops (legacy path)
+  const tv=getTeamTicketValues(),dest={};
   for(let i=1;i<=4;i++){
-    const d=document.getElementById(`dest${i}`).value||gameState.teams[i].city;
-    if(d&&d!=='start'){if(!dest[d])dest[d]=[];dest[d].push({team:i,value:tv[i][d],stars:getTeamStarCount(i)});gameState.teams[i].city=d;}
+    ['a','b','c'].forEach(stop=>{
+      const el=document.getElementById(`dest${i}${stop}`);
+      const d=el?el.value:'';
+      if(d&&d!=='start'){
+        if(!dest[d])dest[d]=[];
+        if(!dest[d].some(x=>x.team===i)) dest[d].push({team:i,value:tv[i][d],stars:getTeamStarCount(i)});
+      }
+    });
+    const lastStop=['c','b','a'].map(s=>{const el=document.getElementById(`dest${i}${s}`);return el?el.value:'';}).find(v=>v&&v!=='start');
+    if(lastStop) gameState.teams[i].city=lastStop;
   }
+  return calculateRevenueForDest(dest,escapedAnimalIdx);
+}
+function calculateRevenueForDest(dest, escapedAnimalIdx){
+  const results=[];
   Object.entries(dest).forEach(([ck,ta])=>{
     const city=cityData[ck],pop=city.pop;
     // Sort: star count DESC first, then ticket value DESC
     ta.sort((a,b)=>b.stars!==a.stars?b.stars-a.stars:b.value-a.value);
     const n=ta.length;
     let splits;
-    if(n===1)splits=[1.0];else if(n===2)splits=ta[0].value===ta[1].value?[0.5,0.5]:[0.6,0.4];
-    else if(n===3){if(ta[0].value===ta[1].value&&ta[1].value===ta[2].value)splits=[0.333,0.333,0.334];else if(ta[0].value===ta[1].value)splits=[0.45,0.45,0.1];else if(ta[1].value===ta[2].value)splits=[0.6,0.2,0.2];else splits=[0.6,0.3,0.1];}
-    else splits=[0.6,0.2,0.1,0.1];
+    // 80% rule: top team has most stars (no tie) AND highest ticket value
+    const topHasMostStars = n>1 && ta[0].stars>ta[1].stars;
+    const topHasHighestValue = n>1 && ta[0].value>ta[1].value;
+    if(n>1 && topHasMostStars && topHasHighestValue){
+      // 80% to top, remaining 20% split evenly among others
+      const rest=0.2/(n-1);
+      splits=[0.8,...Array(n-1).fill(rest)];
+    } else if(n===1){
+      splits=[1.0];
+    } else if(n===2){
+      splits=ta[0].value===ta[1].value?[0.5,0.5]:[0.6,0.4];
+    } else if(n===3){
+      if(ta[0].value===ta[1].value&&ta[1].value===ta[2].value)splits=[0.333,0.333,0.334];
+      else if(ta[0].value===ta[1].value)splits=[0.45,0.45,0.1];
+      else if(ta[1].value===ta[2].value)splits=[0.6,0.2,0.2];
+      else splits=[0.6,0.3,0.1];
+    } else {
+      splits=[0.6,0.2,0.1,0.1];
+    }
     const cr={city:city.name,pop,teams:[]};
     ta.forEach((t,idx)=>{
       const tn=t.team;if(!gameState.teams[tn].soldTo[ck])gameState.teams[tn].soldTo[ck]=0;
@@ -836,8 +919,19 @@ function calculateRevenue(escapedAnimalIdx){
       }
       // Apply insurance modifier
       let finalRev=rawRev;
+      let umbrellaTriggered=false;
       if(escaped){
-        if(insLevel===0) finalRev=0;      // no insurance — forfeit all revenue
+        if(insLevel===0){
+          // Check umbrella: active, not yet used, team has no PARTIAL/FULL for this category
+          const hasUmbrella = gameState.teams[tn].umbrella && !gameState.teams[tn].umbrellaUsed;
+          if(hasUmbrella){
+            finalRev=rawRev; // revenue protected
+            umbrellaTriggered=true;
+            gameState.teams[tn].umbrellaUsed=true; // consumed
+          } else {
+            finalRev=0; // no insurance — forfeit all revenue
+          }
+        }
         else if(insLevel===1) finalRev=rawRev; // partial: revenue protected, animal lost next year
         // insLevel===2 → full: revenue protected, animal kept
       }
@@ -845,7 +939,7 @@ function calculateRevenue(escapedAnimalIdx){
       gameState.teams[tn].cash+=finalRev;gameState.teams[tn].soldTo[ck]+=share;
       const ta2=gameState.teams[tn].artworks;
       if(ta2.length>0&&finalRev>0){const ttv=ta2.reduce((s,a)=>s+animals[a.idx].cities[ck],0);const tix=Math.round(pop*share);if(ttv>0)ta2.forEach(a=>{const f=animals[a.idx].cities[ck]/ttv;a.revenue+=Math.round(finalRev*f);a.ticketsSold+=Math.round(tix*f);});}
-      cr.teams.push({teamNum:tn,ticketPrice:t.value,stars:t.stars,actualShare:share,alreadySold:alr,revenue:finalRev,escaped,insLevel});
+      cr.teams.push({teamNum:tn,ticketPrice:t.value,stars:t.stars,actualShare:share,alreadySold:alr,revenue:finalRev,escaped,insLevel,umbrellaTriggered});
     });results.push(cr);
   });return results;
 }
@@ -855,15 +949,44 @@ function calculateRevenue(escapedAnimalIdx){
 // =============================================
 function nextRound(){
   const cur=gameState.round;
-  // Run escape sequence, then calculate revenue with escape applied
+  // Escape happens once per round, before stop 1
   runEscapeSequence(()=>{
-    const results=calculateRevenueWithEscape();
-    showSeasonResults(cur, results);
+    const lastEscaped = gameState.escapedAnimals.length > 0 ? gameState.escapedAnimals[gameState.escapedAnimals.length-1] : null;
+    // Run 3 stops sequentially
+    runStop(cur, 'a', lastEscaped, ()=>{
+      runStop(cur, 'b', null, ()=>{
+        runStop(cur, 'c', null, ()=>{
+          finishRound(cur);
+        });
+      });
+    });
   });
 }
 
+function runStop(roundNum, stopKey, escapedAnimalIdx, callback){
+  // Collect destinations for this stop only
+  const tv=getTeamTicketValues();
+  const dest={};
+  for(let i=1;i<=4;i++){
+    const el=document.getElementById(`dest${i}${stopKey}`);
+    const d=el?el.value:'';
+    if(d&&d!=='start'){
+      if(!dest[d])dest[d]=[];
+      if(!dest[d].some(x=>x.team===i)){
+        dest[d].push({team:i,value:tv[i][d],stars:getTeamStarCount(i)});
+      }
+    }
+    // Update team city after this stop
+    if(d&&d!=='start') gameState.teams[i].city=d;
+  }
+  const results=calculateRevenueForDest(dest, escapedAnimalIdx);
+  if(results.length===0){ callback(); return; } // no one moved this stop
+  const stopLabel={a:'STOP 1',b:'STOP 2',c:'STOP 3'}[stopKey];
+  showStopResults(roundNum, stopLabel, results, escapedAnimalIdx, callback);
+}
+
 function calculateRevenueWithEscape(){
-  // The last escaped animal index
+  // Legacy — not used in sequential flow but kept for compatibility
   const lastEscaped = gameState.escapedAnimals.length > 0 ? gameState.escapedAnimals[gameState.escapedAnimals.length-1] : null;
   return calculateRevenue(lastEscaped);
 }
@@ -888,7 +1011,8 @@ function showSeasonResults(cur, results){
       const escaped = t.escaped;
       const insLevel = t.insLevel||0;
       let escNote='';
-      if(escaped&&insLevel===0) escNote=`<span style="color:#c0392b;font-size:0.62rem;font-weight:700"> ESCAPED — NO COVER · FORFEIT · ANIMAL LOST</span>`;
+      if(escaped&&insLevel===0&&t.umbrellaTriggered) escNote=`<span style="color:#7a5a9a;font-size:0.62rem;font-weight:700"> ESCAPED — ☂ UMBRELLA · REVENUE SAVED · ANIMAL LOST</span>`;
+      else if(escaped&&insLevel===0) escNote=`<span style="color:#c0392b;font-size:0.62rem;font-weight:700"> ESCAPED — NO COVER · FORFEIT · ANIMAL LOST</span>`;
       else if(escaped&&insLevel===1) escNote=`<span style="color:#e8a800;font-size:0.62rem;font-weight:700"> ESCAPED — PARTIAL · REVENUE SAVED · ANIMAL LOST</span>`;
       else if(escaped&&insLevel===2) escNote=`<span style="color:#1e8a4a;font-size:0.62rem;font-weight:700"> ESCAPED — FULL · REVENUE SAVED · ANIMAL KEPT</span>`;
       html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;margin-bottom:4px;background:#0d0d0d;border-left:3px solid ${col}">
@@ -907,37 +1031,14 @@ function showSeasonResults(cur, results){
   const modal=document.createElement('div');modal.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px';
   modal.innerHTML=html;document.body.appendChild(modal);
   document.getElementById('closeSeason').onclick=()=>{
-    // Remove escaped animal based on insurance level
-    if(lastEscIdx !== null){
-      [1,2,3,4].forEach(tn=>{
-        const team = gameState.teams[tn];
-        const owns = team.artworks.some(aw => aw.idx === lastEscIdx);
-        if(!owns) return;
-        const escCat = animals[lastEscIdx].category;
-        const insLvl = (team.insurance||{})[escCat]||0;
-        // FULL (2): animal is kept — do not remove
-        // PARTIAL (1) or NONE (0): animal is lost
-        if(insLvl < 2){
-          team.artworks = team.artworks.filter(aw => aw.idx !== lastEscIdx);
-        }
-      });
-      // Mark on card UI — hide team badge for escaped animal
-      const escCard = document.querySelector(`.animal-card[data-idx="${lastEscIdx}"]`);
-      if(escCard){
-        const badge = escCard.querySelector('.team-badge-container');
-        if(badge) badge.innerHTML = '<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(180,30,30,0.18);pointer-events:none;display:flex;align-items:center;justify-content:center"><span style="font-family:\'Bebas Neue\',sans-serif;font-size:0.7rem;letter-spacing:0.15em;color:#c0392b;background:rgba(0,0,0,0.6);padding:2px 6px">ESCAPED</span></div>';
-        escCard.style.opacity = '0.5';
-      }
-    }
-    updateAllRiskBadges();
     document.body.removeChild(modal);
+    callback();
   };
   const ld=document.getElementById('logEntries');
   const esc = lastEscAn ? ` [${lastEscAn.title} escaped!]` : '';
   const ll=results.flatMap(r=>r.teams.map(t=>`T${t.teamNum} at ${r.city}: $${t.revenue.toLocaleString()} (${Math.round(t.actualShare*100)}%)`));
-  ld.innerHTML=`<div class="log-entry"><strong>Y${cur}:${esc}</strong></div>`+ll.map(l=>`<div class="log-entry">${l}</div>`).join('')+ld.innerHTML;
-  gameState.round++;drawTeams();populateDestinationDropdowns();updateTeamDisplay();
-  if(gameState.round>gameState.maxRounds)showEndGameScreen();
+  ld.innerHTML=`<div class="log-entry"><strong>Y${cur} ${stopLabel}:${esc}</strong></div>`+ll.map(l=>`<div class="log-entry">${l}</div>`).join('')+ld.innerHTML;
+  updateTeamDisplay();
 }
 
 // =============================================
@@ -964,10 +1065,10 @@ function loadGame(){
 function resetGame(){
   if(!confirm('Reset the game?'))return;
   gameState={round:1,maxRounds:parseInt(document.getElementById('totalRounds').value)||8,insurancePurchased:false,escapedAnimals:[],
-    teams:{1:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
-           2:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
-           3:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}},
-           4:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0}}}};
+    teams:{1:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0},umbrella:false,umbrellaPaid:false,umbrellaUsed:false},
+           2:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0},umbrella:false,umbrellaPaid:false,umbrellaUsed:false},
+           3:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0},umbrella:false,umbrellaPaid:false,umbrellaUsed:false},
+           4:{cash:0,city:'start',artworks:[],soldTo:{},bonuses:[],insurance:{land:0,air:0,sea:0,ice:0},insurancePaid:{land:0,air:0,sea:0,ice:0},umbrella:false,umbrellaPaid:false,umbrellaUsed:false}}};
   draftPickNumber=0;document.getElementById('logEntries').innerHTML='';
   for(let i=1;i<=4;i++)document.getElementById(`dest${i}`).value='';
   document.querySelectorAll('.team-badge-container').forEach(c=>c.innerHTML='');document.querySelectorAll('.animal-card').forEach(c=>delete c.dataset.team);
@@ -1278,10 +1379,24 @@ function renderInsurancePanels(){
       </div>`;
     }).filter(r=>r).join('');
 
-    const totalCost = cats.reduce((s,cat)=>s+insuranceCostFor(cat,ins[cat]||0),0);
+    const hasUmbrella = gameState.teams[tn].umbrella||false;
+    const umbrellaUsed = gameState.teams[tn].umbrellaUsed||false;
+    const totalCost = cats.reduce((s,cat)=>s+insuranceCostFor(cat,ins[cat]||0),0) + (hasUmbrella&&!gameState.teams[tn].umbrellaPaid?25000000:0);
+    const umbrellaLabel = umbrellaUsed ? 'USED' : (hasUmbrella ? 'ACTIVE' : 'NONE');
+    const umbrellaBtn0Style = `flex:1;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:pointer;border:1px solid #d0c8bc;background:${!hasUmbrella?'#e0dbd2':'#fff'};color:${!hasUmbrella?'#1a1714':'#b0a898'}`;
+    const umbrellaBtn1Style = `flex:1;padding:4px 3px;font-size:0.58rem;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em;cursor:${umbrellaUsed?'default':'pointer'};border:1px solid #d0c8bc;background:${hasUmbrella&&!umbrellaUsed?'#7a5a9a':'#fff'};color:${hasUmbrella&&!umbrellaUsed?'#fff':'#b0a898'}${umbrellaUsed?';opacity:0.5':''}`;
+    const umbrellaRow = `<div style="margin-bottom:10px;padding:8px;background:#f5f0fa;border:1px solid #d0c0e8">
+      <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#7a5a9a;margin-bottom:4px">☂ UMBRELLA POLICY ${umbrellaUsed?'<span style=\"color:#c0392b\">· USED</span>':''}</div>
+      <div style="font-size:0.58rem;color:#9a8e80;margin-bottom:6px">Covers revenue for any uninsured escaped animal · one-time use · animal still lost</div>
+      <div style="display:flex;gap:4px">
+        <button onclick="setUmbrella(${tn},false)" style="${umbrellaBtn0Style}">NONE</button>
+        <button onclick="setUmbrella(${tn},true)" ${umbrellaUsed?'disabled':''} style="${umbrellaBtn1Style}">UMBRELLA<br>$25M</button>
+      </div>
+    </div>`;
     return `<div style="background:#fff;padding:12px;border:1px solid #e0dbd2;border-left:3px solid ${teamCol[tn]};box-shadow:0 2px 8px rgba(0,0,0,0.06)">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.12em;color:${teamCol[tn]};margin-bottom:10px">${teamName[tn]}</div>
       ${catRows}
+      ${umbrellaRow}
       <div style="border-top:1px solid #e0dbd2;padding-top:8px;font-size:0.7rem;color:#7a7060">
         Insurance cost: <strong style="color:${totalCost>0?'#c0392b':'#b0a898'}">$${(totalCost/1000000).toFixed(0)}M</strong>
       </div>
@@ -1289,6 +1404,11 @@ function renderInsurancePanels(){
   }).join('');
 }
 
+function setUmbrella(teamNum, active){
+  if(gameState.teams[teamNum].umbrellaUsed) return; // can't change once used
+  gameState.teams[teamNum].umbrella = active;
+  renderInsurancePanels();
+}
 function setInsurance(teamNum, cat, level){
   if(!gameState.teams[teamNum].insurance) gameState.teams[teamNum].insurance={land:0,air:0,sea:0,ice:0};
   gameState.teams[teamNum].insurance[cat] = level;
@@ -1310,6 +1430,14 @@ function confirmInsurance(){
       if(delta > 0) gameState.teams[tn].cash -= delta;
     });
     gameState.teams[tn].insurancePaid = {...ins};
+    // Charge umbrella if newly purchased
+    if(gameState.teams[tn].umbrella && !gameState.teams[tn].umbrellaPaid){
+      gameState.teams[tn].cash -= 25000000;
+      gameState.teams[tn].umbrellaPaid = true;
+    } else if(!gameState.teams[tn].umbrella && !gameState.teams[tn].umbrellaUsed){
+      // Refund not needed but reset paid if they deselect before confirming
+      gameState.teams[tn].umbrellaPaid = false;
+    }
   });
   gameState.insurancePurchased = true;
   document.getElementById('insuranceModal').style.display='none';
@@ -1350,7 +1478,9 @@ function runEscapeSequence(callback){
     if(!owns) return;
     const ins = (gameState.teams[tn].insurance||{})[an.category]||0;
     let msg = '';
-    if(ins===0) msg = `<span style="color:${teamCol[tn]};font-weight:700">${teamName[tn]}</span>: No insurance — <span style="color:#c0392b">forfeits all revenue this season · animal removed next year</span>`;
+    const hasUmb = gameState.teams[tn].umbrella && !gameState.teams[tn].umbrellaUsed;
+    if(ins===0 && hasUmb) msg = `<span style="color:${teamCol[tn]};font-weight:700">${teamName[tn]}</span>: ☂ Umbrella — <span style="color:#7a5a9a">revenue protected (one-time) · animal lost next year</span>`;
+    else if(ins===0) msg = `<span style="color:${teamCol[tn]};font-weight:700">${teamName[tn]}</span>: No insurance — <span style="color:#c0392b">forfeits all revenue this season · animal removed next year</span>`;
     else if(ins===1) msg = `<span style="color:${teamCol[tn]};font-weight:700">${teamName[tn]}</span>: Partial insurance — <span style="color:#e8a800">full revenue protected this season</span> · <span style="color:#c0392b">animal lost next year</span>`;
     else msg = `<span style="color:${teamCol[tn]};font-weight:700">${teamName[tn]}</span>: Full insurance — <span style="color:#1e8a4a">revenue protected · animal stays in collection</span>`;
     impactLines.push(msg);
@@ -1450,7 +1580,7 @@ function showEscapeAnimation(category, done){
 // EVENTS + INIT
 // =============================================
 document.getElementById('mapBtn').addEventListener('click',()=>{
-  gameState.maxRounds=parseInt(document.getElementById('totalRounds').value)||8;
+  gameState.maxRounds=parseInt(document.getElementById('totalRounds').value)||3;
   document.getElementById('mapModal').classList.add('show');
   initMap();populateDestinationDropdowns();updateTeamDisplay();
 });
@@ -1460,7 +1590,15 @@ document.getElementById('resetGame').addEventListener('click',resetGame);
 document.getElementById('saveGame').addEventListener('click',saveGame);
 document.getElementById('loadGame').addEventListener('click',loadGame);
 document.getElementById('totalRounds').addEventListener('change',e=>{gameState.maxRounds=parseInt(e.target.value)||8;updateTeamDisplay();});
-for(let i=1;i<=4;i++)document.getElementById(`dest${i}`).addEventListener('change',updateTeamDisplay);
+for(let i=1;i<=4;i++){
+  const ia=i; // capture
+  const ea=document.getElementById(`dest${ia}a`);
+  const eb=document.getElementById(`dest${ia}b`);
+  const ec=document.getElementById(`dest${ia}c`);
+  if(ea) ea.addEventListener('change',()=>{updateStopB(ia);updateTeamDisplay();});
+  if(eb) eb.addEventListener('change',()=>{updateStopC(ia);updateTeamDisplay();});
+  if(ec) ec.addEventListener('change',updateTeamDisplay);
+}
 
 initGallery();
 updateCount();
